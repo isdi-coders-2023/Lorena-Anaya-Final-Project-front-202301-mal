@@ -7,3 +7,14 @@ export interface User {
   role: string;
   password: string;
 }
+
+export type newUser = Pick<
+  User,
+  | 'email'
+  | 'firstName'
+  | 'lastName'
+  | 'languages'
+  | 'password'
+  | 'phone'
+  | 'role'
+>;
