@@ -138,6 +138,7 @@ export const FormButton = styled.button`
   border: none;
   box-shadow: 0px 3px 12px rgba(74, 58, 255, 0.18);
   color: #275623;
+  margin-bottom: 2rem;
 
   :hover {
     cursor: pointer;
@@ -158,7 +159,6 @@ export const FeedBackComponent = styled.p`
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
-  margin-bottom: 2rem;
   color: #275623;
   font-family: 'Poppins', sans-serif;
   font-style: normal;
@@ -183,7 +183,7 @@ export const ErrorFeedbackComponent = styled.p`
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
-  margin-bottom: 2rem;
+
   color: #f22a2a;
   font-family: 'Poppins', sans-serif;
   font-style: normal;
