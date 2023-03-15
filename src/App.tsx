@@ -1,5 +1,11 @@
+import { RegisterForm } from './features/register/RegisterForm';
+
 function App() {
-  return <h1 className="App">Hello World.</h1>;
+  return (
+    <>
+      <RegisterForm />
+    </>
+  );
 }
 
 export default App;
