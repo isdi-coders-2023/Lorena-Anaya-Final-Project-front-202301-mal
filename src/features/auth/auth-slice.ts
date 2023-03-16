@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 
 import { newUser } from '../../shared/models/user-model';
-import { registerUser } from './auth-api';
+import { logUser, registerUser } from './auth-api';
 
 export interface AuthResponse {
   msg: 'string';
@@ -35,6 +35,20 @@ export const sendUser = createAsyncThunk(
   },
 );
 
+export const logUserAsync = createAsyncThunk(
+  'logUser/logUserAsync',
+  async (form: HTMLFormElement) => {
+    const formData = new FormData(form);
+    const user = Object.fromEntries(formData.entries());
+    const apiResponse = await logUser(user as newUser);
+    const data: AuthResponse = await apiResponse.json();
+    if (!apiResponse.ok) {
+      throw new Error(`${data.msg}`);
+    }
+    return data;
+  },
+);
+
 export const authUserSlice = createSlice({
   name: 'authUserSlice',
   initialState,
@@ -54,6 +68,23 @@ export const authUserSlice = createSlice({
         },
       )
       .addCase(sendUser.rejected, (state, action) => {
+        state.status = 'failed';
+        state.registerStatus = 'failed';
+        state.responseMsg = action.error.message;
+      })
+      .addCase(logUserAsync.pending, state => {
+        state.status = 'loading';
+        state.registerStatus = 'loading';
+      })
+      .addCase(
+        logUserAsync.fulfilled,
+        (state, action: PayloadAction<AuthResponse>) => {
+          state.status = 'idle';
+          state.registerStatus = 'idle';
+          state.responseMsg = action.payload.msg;
+        },
+      )
+      .addCase(logUserAsync.rejected, (state, action) => {
         state.status = 'failed';
         state.registerStatus = 'failed';
         state.responseMsg = action.error.message;
