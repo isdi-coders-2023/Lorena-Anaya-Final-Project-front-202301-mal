@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const RegisterFormContainer = styled.div`
+export const FormContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -8,7 +8,7 @@ export const RegisterFormContainer = styled.div`
   align-items: center;
 `;
 
-export const RegisterFormTitle = styled.h1`
+export const FormTitle = styled.h1`
   font-family: 'Rubik-Medium', sans-serif;
   display: flex;
   align-items: center;
@@ -26,7 +26,7 @@ export const RegisterFormTitle = styled.h1`
   }
 `;
 
-export const RegisterFormSubtilte = styled.h2`
+export const FormSubtitle = styled.h2`
   padding-top: 1.5rem;
   display: flex;
   text-align: center;
