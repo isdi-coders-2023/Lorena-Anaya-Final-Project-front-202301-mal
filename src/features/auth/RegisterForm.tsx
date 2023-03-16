@@ -45,7 +45,7 @@ export const RegisterForm = () => {
               />
               {responseMsg}
             </ErrorFeedbackComponent>
-            <FormButton type="submit">Try again</FormButton>;
+            <FormButton type="submit">Try again</FormButton>
           </>
         );
 
