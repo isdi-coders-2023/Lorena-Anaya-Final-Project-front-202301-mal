@@ -1,5 +1,10 @@
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { selectRegisterStatus, selectStatus, sendUser } from './register-slice';
+import {
+  selectRegisterStatus,
+  selectResponseMsg,
+  selectStatus,
+  sendUser,
+} from './auth-slice';
 import {
   FormButton,
   RegisterFormContainer,
@@ -14,10 +19,11 @@ export const RegisterForm = () => {
   const dispatch = useAppDispatch();
   const responseStatus = useAppSelector(selectStatus);
   const registerStatus = useAppSelector(selectRegisterStatus);
+  const responseMsg = useAppSelector(selectResponseMsg);
 
   const generateFeedback = () => {
     switch (registerStatus) {
-      case 'success':
+      case 'idle':
         return (
           <FeedBackComponent role="paragraph">
             <img
@@ -25,10 +31,10 @@ export const RegisterForm = () => {
               src="./assets/icons/happy.png"
               alt="Happy face"
             />
-            Succesfully registered!
+            {responseMsg}
           </FeedBackComponent>
         );
-      case 'error409':
+      case 'failed':
         return (
           <>
             <ErrorFeedbackComponent role="paragraph">
@@ -37,23 +43,9 @@ export const RegisterForm = () => {
                 src="./assets/icons/sad.png"
                 alt="Sad face"
               />
-              Error, that user is already registered.
+              {responseMsg}
             </ErrorFeedbackComponent>
             <FormButton type="submit">Try again</FormButton>;
-          </>
-        );
-      case 'error':
-        return (
-          <>
-            <ErrorFeedbackComponent role="paragraph">
-              <img
-                className="sad-emoticon"
-                src="./assets/icons/sad.png"
-                alt="Sad face"
-              />
-              Error registering user. Please try again later.
-            </ErrorFeedbackComponent>
-            <FormButton type="submit">Try again</FormButton>
           </>
         );
 

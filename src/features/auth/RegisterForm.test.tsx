@@ -87,9 +87,7 @@ describe('Given a Form component', () => {
     await userEvent.click(screen.getByRole('button'));
 
     await waitFor(async () => {
-      expect(
-        screen.getByText('Error registering user. Please try again later.'),
-      ).toBeInTheDocument();
+      expect(screen.getByText('Error while registering')).toBeInTheDocument();
     });
   });
 

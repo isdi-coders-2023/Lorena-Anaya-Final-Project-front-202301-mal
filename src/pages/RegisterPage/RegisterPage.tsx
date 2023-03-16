@@ -1,4 +1,4 @@
-import { RegisterForm } from '../../features/register/RegisterForm';
+import { RegisterForm } from '../../features/auth/RegisterForm';
 import { RegisterPageLogo } from './RegisterPageStyled';
 
 export const RegisterPage = () => {
