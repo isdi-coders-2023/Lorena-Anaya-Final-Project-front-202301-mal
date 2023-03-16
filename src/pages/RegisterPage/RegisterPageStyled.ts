@@ -9,6 +9,13 @@ export const RegisterPageLogo = styled.h2`
   display: flex;
   align-items: center;
   text-align: center;
-  padding: 1.5rem;
   color: #fafaff;
+`;
+
+export const RegisterHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  flex-direction: row;
+  padding: 1.5rem;
 `;
