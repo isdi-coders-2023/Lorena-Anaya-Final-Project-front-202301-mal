@@ -7,10 +7,10 @@ import {
 } from './auth-slice';
 import {
   FormButton,
-  RegisterFormContainer,
+  FormContainer,
   RegisterFormStyled,
-  RegisterFormSubtilte,
-  RegisterFormTitle,
+  FormSubtitle,
+  FormTitle,
   FeedBackComponent,
   ErrorFeedbackComponent,
 } from './RegisterFormStyled';
@@ -56,17 +56,15 @@ export const RegisterForm = () => {
 
   return (
     <div>
-      <RegisterFormContainer>
-        <RegisterFormTitle aria-label="heading">
-          Complete your registration
-        </RegisterFormTitle>
+      <FormContainer>
+        <FormTitle aria-label="heading">Complete your registration</FormTitle>
         <RegisterFormStyled
           onSubmit={e => {
             e.preventDefault();
             dispatch(sendUser(e.currentTarget));
           }}
         >
-          <RegisterFormSubtilte>Enter your details</RegisterFormSubtilte>
+          <FormSubtitle>Enter your details</FormSubtitle>
           <div className="inputs-container">
             <div className="input-container">
               <label htmlFor="email" placeholder=" ">
@@ -140,7 +138,7 @@ export const RegisterForm = () => {
             generateFeedback()
           )}
         </RegisterFormStyled>
-      </RegisterFormContainer>
+      </FormContainer>
     </div>
   );
 };
