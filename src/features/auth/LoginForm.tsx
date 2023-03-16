@@ -1,21 +1,21 @@
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import {
+  logUserAsync,
   selectRegisterStatus,
   selectResponseMsg,
   selectStatus,
-  sendUser,
 } from './auth-slice';
+import { LoginFormStyled } from './LoginFormStyled';
 import {
+  ErrorFeedbackComponent,
+  FeedBackComponent,
   FormButton,
   FormContainer,
-  RegisterFormStyled,
   FormSubtitle,
   FormTitle,
-  FeedBackComponent,
-  ErrorFeedbackComponent,
 } from './RegisterFormStyled';
 
-export const RegisterForm = () => {
+export const LoginForm = () => {
   const dispatch = useAppDispatch();
   const responseStatus = useAppSelector(selectStatus);
   const registerStatus = useAppSelector(selectRegisterStatus);
@@ -50,18 +50,18 @@ export const RegisterForm = () => {
         );
 
       default:
-        return <FormButton type="submit">Sign up</FormButton>;
+        return <FormButton type="submit">Log in</FormButton>;
     }
   };
 
   return (
     <div>
       <FormContainer>
-        <FormTitle aria-label="heading">Complete your registration</FormTitle>
-        <RegisterFormStyled
+        <FormTitle>Keeping track of your projects</FormTitle>
+        <LoginFormStyled
           onSubmit={e => {
             e.preventDefault();
-            dispatch(sendUser(e.currentTarget));
+            dispatch(logUserAsync(e.currentTarget));
           }}
         >
           <FormSubtitle>Enter your details</FormSubtitle>
@@ -75,49 +75,6 @@ export const RegisterForm = () => {
                 id="email"
                 type="email"
                 name="email"
-                required
-              ></input>
-            </div>
-            <div className="input-container">
-              <label htmlFor="first-name">First name:</label>
-              <input
-                className="input-box"
-                id="first-name"
-                type="text"
-                name="firstName"
-                required
-              ></input>
-            </div>
-            <div className="input-container">
-              <label htmlFor="last-name">Last name:</label>
-              <input
-                className="input-box"
-                id="last-name"
-                type="text"
-                name="lastName"
-                required
-              ></input>
-            </div>
-            <div className="input-container">
-              <label htmlFor="phone">Phone:</label>
-              <input
-                className="input-box"
-                id="phone"
-                type="text"
-                name="phone"
-                required
-                minLength={9}
-                maxLength={9}
-                pattern="[0-9]+"
-              ></input>
-            </div>
-            <div className="input-container">
-              <label htmlFor="languages">Languages:</label>
-              <input
-                className="input-box"
-                id="languages"
-                type="text"
-                name="languages"
                 required
               ></input>
             </div>
@@ -137,7 +94,7 @@ export const RegisterForm = () => {
           ) : (
             generateFeedback()
           )}
-        </RegisterFormStyled>
+        </LoginFormStyled>
       </FormContainer>
     </div>
   );

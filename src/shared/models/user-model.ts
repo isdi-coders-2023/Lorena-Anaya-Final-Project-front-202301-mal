@@ -18,3 +18,5 @@ export type newUser = Pick<
   | 'phone'
   | 'role'
 >;
+
+export type loginUser = Pick<User, 'email' | 'password'>;
