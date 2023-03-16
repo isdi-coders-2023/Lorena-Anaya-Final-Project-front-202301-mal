@@ -174,6 +174,7 @@ export const FeedBackComponent = styled.p`
   @media (min-width: 664px) {
     font-size: 1.25rem;
     margin-top: 2rem;
+    padding-bottom: 1rem;
   }
 `;
 
@@ -183,7 +184,6 @@ export const ErrorFeedbackComponent = styled.p`
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
-
   color: #f22a2a;
   font-family: 'Poppins', sans-serif;
   font-style: normal;
@@ -198,5 +198,6 @@ export const ErrorFeedbackComponent = styled.p`
   @media (min-width: 664px) {
     font-size: 1.25rem;
     margin-top: 2rem;
+    padding-bottom: 1rem;
   }
 `;
