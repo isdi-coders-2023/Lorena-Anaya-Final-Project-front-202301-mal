@@ -82,6 +82,7 @@ export const authUserSlice = createSlice({
           state.status = 'idle';
           state.registerStatus = 'idle';
           state.responseMsg = action.payload.msg;
+          sessionStorage.setItem('Bearer', action.payload.accessToken);
         },
       )
       .addCase(logUserAsync.rejected, (state, action) => {
