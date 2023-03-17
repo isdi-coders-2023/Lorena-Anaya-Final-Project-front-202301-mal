@@ -1,15 +1,20 @@
 import { RegisterForm } from '../../features/auth/RegisterForm';
-import { RegisterLink } from '../LoginPage/LoginPageStyled';
-import { RegisterHeader, RegisterPageLogo } from './RegisterPageStyled';
+
+import {
+  AuthPageContainer,
+  LoginLink,
+  RegisterHeader,
+  RegisterPageLogo,
+} from './RegisterPageStyled';
 
 export const RegisterPage = () => {
   return (
-    <>
+    <AuthPageContainer>
       <RegisterHeader>
         <RegisterPageLogo>BTC365</RegisterPageLogo>
-        <RegisterLink to={'/'}>Go back to login</RegisterLink>
+        <LoginLink to={'/'}>Go back to login</LoginLink>
       </RegisterHeader>
       <RegisterForm />
-    </>
+    </AuthPageContainer>
   );
 };
