@@ -8,10 +8,6 @@ ul {
   text-decoration: none;
 }
 
-body {
-  background-color: #00a2a1;
-}
-
 @font-face {
   font-family: 'Poppins-Bold';
   src: local('Poppins-Bold'),
