@@ -1,4 +1,4 @@
-import { TranslationCard } from '../../features/translations/TranslationCard';
+import TranslationsList from '../../features/translations/TranslationsList/TranslationsList';
 import {
   DashboardPageContainer,
   DashBoardPageTitle,
@@ -8,7 +8,7 @@ export const DashboardPage = () => {
   return (
     <DashboardPageContainer>
       <DashBoardPageTitle>Assigned Projects</DashBoardPageTitle>
-      <TranslationCard />
+      <TranslationsList />
     </DashboardPageContainer>
   );
 };
