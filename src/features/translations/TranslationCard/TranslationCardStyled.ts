@@ -28,10 +28,8 @@ export const DueDate = styled.p`
   font-weight: 400;
   font-size: 0.9rem;
   line-height: 18px;
-
   display: flex;
   align-items: center;
-
   color: #666666;
 `;
 
