@@ -1,4 +1,4 @@
-import { LoginForm } from '../../features/auth/LoginForm';
+import { LoginForm } from '../../features/auth/login/LoginForm';
 import { AuthPageContainer } from '../RegisterPage/RegisterPageStyled';
 import {
   LoginPageLogo,
