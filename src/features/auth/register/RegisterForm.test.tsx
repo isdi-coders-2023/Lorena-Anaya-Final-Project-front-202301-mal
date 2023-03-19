@@ -1,12 +1,10 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-
 import { Provider } from 'react-redux';
-import { store } from '../../app/store';
+import { store } from '../../../app/store';
+import { server } from '../../../mocks/server';
+import { RegisterForm } from '../register/RegisterForm';
 
-import { server } from '../../mocks/server';
-
-import { RegisterForm } from './RegisterForm';
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());

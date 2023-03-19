@@ -1,6 +1,22 @@
 import { rest } from 'msw';
+import { translationsResponseFulfilled } from './translations-mock';
 
 export const handlers = [
+  rest.get(
+    `https://lorena-anaya-final-project-back-202301.onrender.com/user//translations`,
+    (req, res, ctx) => {
+      if (translationsResponseFulfilled.failed) {
+        return res(
+          ctx.status(500),
+          ctx.json({ msg: 'Error while fetching translations' }),
+        );
+      } else if (translationsResponseFulfilled.translations.length > 0) {
+        return res(ctx.status(200), ctx.json(translationsResponseFulfilled));
+      } else if (translationsResponseFulfilled.translations.length === 0) {
+        return res(ctx.status(200), ctx.json(translationsResponseFulfilled));
+      }
+    },
+  ),
   rest.post(
     'https://lorena-anaya-final-project-back-202301.onrender.com/auth/register',
     async (req, res, ctx) => {
@@ -31,7 +47,7 @@ export const handlers = [
       const { email } = request;
 
       if (email === 'registeredEmail@test.com') {
-        return res(ctx.status(201), ctx.json({ msg: 'You are in!' }));
+        return res(ctx.status(200), ctx.json({ msg: 'You are in!' }));
       }
 
       if (email === 'notRegisteredEmail@test.com') {

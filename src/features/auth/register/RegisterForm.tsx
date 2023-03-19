@@ -1,10 +1,10 @@
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import {
   selectRegisterStatus,
   selectResponseMsg,
   selectStatus,
   sendUser,
-} from './auth-slice';
+} from '../auth-slice';
 import {
   FormButton,
   FormContainer,

@@ -4,21 +4,28 @@ import { RootState } from '../../app/store';
 import { newUser } from '../../shared/models/user-model';
 import { logUser, registerUser } from './auth-api';
 
-export interface AuthResponse {
+export interface RegisterResponse {
   msg: 'string';
-  accessToken: 'string';
 }
 
-export interface RegisterUserState {
+export interface LoginResponse {
+  msg: 'string';
+  accessToken: 'string';
+  id: 'string';
+}
+
+export interface AuthUserState {
   status: 'idle' | 'loading' | 'failed';
   registerStatus: 'loading' | 'failed' | 'idle' | 'unused';
   responseMsg: string | undefined;
+  id: string;
 }
 
-const initialState: RegisterUserState = {
+const initialState: AuthUserState = {
   status: 'idle',
   registerStatus: 'unused',
   responseMsg: ' ',
+  id: '',
 };
 
 export const sendUser = createAsyncThunk(
@@ -27,7 +34,7 @@ export const sendUser = createAsyncThunk(
     const formData = new FormData(form);
     const user = Object.fromEntries(formData.entries());
     const apiResponse = await registerUser(user as newUser);
-    const data: AuthResponse = await apiResponse.json();
+    const data: RegisterResponse = await apiResponse.json();
     if (!apiResponse.ok) {
       throw new Error(`${data.msg}`);
     }
@@ -41,7 +48,7 @@ export const logUserAsync = createAsyncThunk(
     const formData = new FormData(form);
     const user = Object.fromEntries(formData.entries());
     const apiResponse = await logUser(user as newUser);
-    const data: AuthResponse = await apiResponse.json();
+    const data: LoginResponse = await apiResponse.json();
     if (!apiResponse.ok) {
       throw new Error(`${data.msg}`);
     }
@@ -61,7 +68,7 @@ export const authUserSlice = createSlice({
       })
       .addCase(
         sendUser.fulfilled,
-        (state, action: PayloadAction<AuthResponse>) => {
+        (state, action: PayloadAction<RegisterResponse>) => {
           state.status = 'idle';
           state.registerStatus = 'idle';
           state.responseMsg = action.payload.msg;
@@ -78,11 +85,13 @@ export const authUserSlice = createSlice({
       })
       .addCase(
         logUserAsync.fulfilled,
-        (state, action: PayloadAction<AuthResponse>) => {
+        (state, action: PayloadAction<LoginResponse>) => {
           state.status = 'idle';
           state.registerStatus = 'idle';
           state.responseMsg = action.payload.msg;
           sessionStorage.setItem('Bearer', action.payload.accessToken);
+          sessionStorage.setItem('Id', action.payload.id);
+          state.id = action.payload.id;
         },
       )
       .addCase(logUserAsync.rejected, (state, action) => {
@@ -100,5 +109,7 @@ export const selectRegisterStatus = (state: RootState) =>
 
 export const selectResponseMsg = (state: RootState) =>
   state.authUserReducer.responseMsg;
+
+export const selectResponseId = (state: RootState) => state.authUserReducer.id;
 
 export default authUserSlice.reducer;

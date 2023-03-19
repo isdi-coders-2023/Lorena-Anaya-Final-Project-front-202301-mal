@@ -5,7 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 import React from 'react';
 import { DashboardPage } from './DashboardPage';
 
-test('When rendering the dashboard page, a title should be displayed', () => {
+test.only('When rendering the dashboard page, a title should be displayed', () => {
   render(
     <MemoryRouter>
       <React.StrictMode>

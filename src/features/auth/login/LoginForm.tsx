@@ -1,10 +1,11 @@
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { Navigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import {
   logUserAsync,
   selectRegisterStatus,
   selectResponseMsg,
   selectStatus,
-} from './auth-slice';
+} from '../auth-slice';
 import { LoginFormStyled } from './LoginFormStyled';
 import {
   ErrorFeedbackComponent,
@@ -13,7 +14,7 @@ import {
   FormContainer,
   FormSubtitle,
   FormTitle,
-} from './RegisterFormStyled';
+} from '../register/RegisterFormStyled';
 
 export const LoginForm = () => {
   const dispatch = useAppDispatch();
@@ -25,14 +26,17 @@ export const LoginForm = () => {
     switch (registerStatus) {
       case 'idle':
         return (
-          <FeedBackComponent role="paragraph">
-            <img
-              className="happy-emoticon"
-              src="./assets/icons/happy.png"
-              alt="Happy face"
-            />
-            {responseMsg}
-          </FeedBackComponent>
+          <>
+            <FeedBackComponent role="paragraph">
+              <img
+                className="happy-emoticon"
+                src="./assets/icons/happy.png"
+                alt="Happy face"
+              />
+              {responseMsg}
+            </FeedBackComponent>
+            <Navigate to={'/Dashboard'} />
+          </>
         );
       case 'failed':
         return (

@@ -1,6 +1,6 @@
-import { loginUser, User } from '../../shared/models/user-model';
+import { loginUser, newUser } from '../../shared/models/user-model';
 
-export const registerUser = async (user: User) => {
+export const registerUser = async (user: newUser) => {
   const response = await fetch(
     'https://lorena-anaya-final-project-back-202301.onrender.com/auth/register',
     {
