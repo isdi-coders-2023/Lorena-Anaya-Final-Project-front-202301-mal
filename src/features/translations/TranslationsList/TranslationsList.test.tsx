@@ -24,6 +24,7 @@ describe('Given a translations card list component', () => {
 
   test('When the user logs in and the page is loaded, but he does not have any translations assigned, a message should give feedback', async () => {
     translationsResponseFulfilled.translations = [];
+
     render(
       <Provider store={store}>
         <TranslationsList />
@@ -38,6 +39,7 @@ describe('Given a translations card list component', () => {
   });
 
   test('When the user logs in but the api call fails, a message should give feedback', async () => {
+    translationsResponseFulfilled.failed = true;
     render(
       <Provider store={store}>
         <TranslationsList />
@@ -45,9 +47,7 @@ describe('Given a translations card list component', () => {
     );
 
     await waitFor(() => {
-      expect(
-        screen.getByText("You don't have any assigned translations yet."),
-      ).toBeInTheDocument();
+      expect(screen.getByText('FALLO DEL SERVIDOR')).toBeInTheDocument();
     });
   });
 });

@@ -60,14 +60,8 @@ export const translationsSlice = createSlice({
   },
 });
 
-export const selectStatus = (state: RootState) =>
-  state.translationsReducer.status;
-
 export const selectapiStatus = (state: RootState) =>
   state.translationsReducer.apiStatus;
-
-export const selectResponseMsg = (state: RootState) =>
-  state.translationsReducer.responseMsg;
 
 export const selectTranslations = (state: RootState) =>
   state.translationsReducer.translations;
