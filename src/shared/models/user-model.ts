@@ -1,3 +1,5 @@
+import { Translation } from './translation-model';
+
 export interface User {
   email: string;
   firstName: string;
@@ -6,6 +8,7 @@ export interface User {
   languages: string;
   role: string;
   password: string;
+  translations: Translation[];
 }
 
 export type newUser = Pick<
