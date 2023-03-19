@@ -23,4 +23,6 @@ export const translationsResponseFulfilled = {
       translatedDoc: 'url',
     },
   ],
+  failed: false,
+  idle: true,
 };
