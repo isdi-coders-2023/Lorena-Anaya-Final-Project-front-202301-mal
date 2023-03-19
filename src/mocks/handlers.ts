@@ -1,6 +1,16 @@
 import { rest } from 'msw';
+import { translationsResponseFulfilled } from './translations-mock';
 
 export const handlers = [
+  rest.get(
+    `https://lorena-anaya-final-project-back-202301.onrender.com/user//translations`,
+    (req, res, ctx) => {
+      if (translationsResponseFulfilled) {
+        return res(ctx.status(200), ctx.json(translationsResponseFulfilled));
+      }
+      return res(ctx.status(500), ctx.json({ msg: 'Error while registering' }));
+    },
+  ),
   rest.post(
     'https://lorena-anaya-final-project-back-202301.onrender.com/auth/register',
     async (req, res, ctx) => {
