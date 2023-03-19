@@ -3,7 +3,7 @@ export interface Translation {
   dueDate: Date;
   languageFrom: string;
   languageTo: string;
-  words: Number;
+  words: number;
   status: string;
   toTranslateDoc: string;
   translatedDoc: string;
