@@ -20,7 +20,7 @@ const TranslationsList = () => {
   const apiStatus = useAppSelector(selectapiStatus);
 
   useEffect(() => {
-    dispatch(getTranslations(userId!));
+    dispatch(getTranslations(userId));
   }, [dispatch, userId]);
 
   return (
