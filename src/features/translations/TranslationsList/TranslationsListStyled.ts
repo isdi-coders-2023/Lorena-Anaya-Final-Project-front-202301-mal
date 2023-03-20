@@ -3,10 +3,11 @@ import styled from 'styled-components';
 export const TranslationsListContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  gap: 5rem;
+  gap: 1rem;
   align-items: center;
   justify-content: center;
-  @media (min-width: 600px) {
+  @media (min-width: 720px) {
+    gap: 3rem;
     padding: 2rem;
     justify-content: left;
   }
