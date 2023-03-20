@@ -23,8 +23,10 @@ export const TranslationCard: FC<TranslationCardProps> = ({ translation }) => {
     <TranslationCardContainer>
       <BookingRef>Booking ref. {translation.bookingRef}</BookingRef>
       <DueDate>{`Due date:  ${day}/${month}/${year}`}</DueDate>
-      <FlagAndButtonContainer>
-        <PendingStatusFlag>{translation.status}</PendingStatusFlag>
+      <FlagAndButtonContainer translationStatus={translation.status}>
+        <PendingStatusFlag translationStatus={translation.status}>
+          {translation.status}
+        </PendingStatusFlag>
         <TranslationDetailsButton type="button">
           Details
         </TranslationDetailsButton>
