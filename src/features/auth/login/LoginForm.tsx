@@ -35,7 +35,7 @@ export const LoginForm = () => {
               />
               {responseMsg}
             </FeedBackComponent>
-            <Navigate to={'/Dashboard'} />
+            <Navigate to={'/main/dashboard'} />
           </>
         );
       case 'failed':
