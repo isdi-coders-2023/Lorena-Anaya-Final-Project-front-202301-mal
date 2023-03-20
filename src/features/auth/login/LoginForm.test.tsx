@@ -1,6 +1,7 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { getByAltText, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
 import { store } from '../../../app/store';
 import { server } from '../../../mocks/server';
 import { LoginForm } from '../login/LoginForm';
@@ -33,7 +34,6 @@ describe('Given a Login form component', () => {
     });
   });
 
-  //CORREGIR
   test('When the user press submit and the email is not registered then an error message should appear', async () => {
     render(
       <Provider store={store}>
@@ -54,7 +54,6 @@ describe('Given a Login form component', () => {
     });
   });
 
-  //CORREGIR
   test('When a user tries to login and there is an error it should show message as feedback', async () => {
     render(
       <Provider store={store}>
@@ -73,26 +72,27 @@ describe('Given a Login form component', () => {
     });
   });
 
-  // //CORREGIR
-  // test('When the user press submit and everything went ok, a paragraph should appear indicating success', async () => {
-  //   render(
-  //     <Provider store={store}>
-  //       <LoginForm />
-  //     </Provider>,
-  //   );
+  //CORREGIR
+  test('When the user press submit and everything went ok, a happy face should appear and the page should navigate to main dashboard', async () => {
+    render(
+      <MemoryRouter initialEntries={['/auth/login']}>
+        <Provider store={store}>
+          <LoginForm />
+        </Provider>
+      </MemoryRouter>,
+    );
 
-  //   const email = screen.getByLabelText('Email:');
-  //   await userEvent.type(email, 'registeredEmail@test.com');
-  //   const password = screen.getByLabelText('Password:');
-  //   await userEvent.type(password, 'lorenapassword');
+    const email = screen.getByLabelText('Email:');
+    await userEvent.type(email, 'registeredEmail@test.com');
+    const password = screen.getByLabelText('Password:');
+    await userEvent.type(password, 'lorenapassword');
 
-  //   const submit = screen.getByRole('button');
+    const submit = screen.getByRole('button');
 
-  //   userEvent.click(submit);
+    await userEvent.click(submit);
 
-  //   await waitFor(async () => {
-  //     const message = screen.getByRole('paragraph');
-  //     expect(message).toHaveTextContent('You are in!');
-  //   });
-  // });
+    await waitFor(async () => {
+      expect(screen.getByAltText('Happy face')).toBeInTheDocument();
+    });
+  });
 });
