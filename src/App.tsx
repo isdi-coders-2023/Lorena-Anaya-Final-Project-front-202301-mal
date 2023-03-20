@@ -5,7 +5,7 @@ import { RouterProvider } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{ height: '100vh' }}>
       <RouterProvider router={router} />
     </div>
   );
