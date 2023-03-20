@@ -33,7 +33,6 @@ export const LoginForm = () => {
                 src="./assets/icons/happy.png"
                 alt="Happy face"
               />
-              {responseMsg}
             </FeedBackComponent>
             <Navigate to={'/main/dashboard'} />
           </>

@@ -88,7 +88,6 @@ export const authUserSlice = createSlice({
         (state, action: PayloadAction<LoginResponse>) => {
           state.status = 'idle';
           state.registerStatus = 'idle';
-          state.responseMsg = action.payload.msg;
           sessionStorage.setItem('Bearer', action.payload.accessToken);
           sessionStorage.setItem('Id', action.payload.id);
           state.id = action.payload.id;
