@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface TranslationStatusProps {
+  translationStatus: 'Pending' | 'Completed' | string;
+}
+
 export const TranslationCardContainer = styled.section`
   display: flex;
   flex-direction: column;
@@ -33,16 +37,23 @@ export const DueDate = styled.p`
   color: #666666;
 `;
 
-export const PendingStatusFlag = styled.div`
+export const PendingStatusFlag = styled.div<TranslationStatusProps>`
   padding: 8px;
   gap: 10px;
-  background: #ff993c;
   border-radius: 100px;
   font-family: 'SourceCodePro-Regular', sans-serif;
   font-size: 0.9rem;
   display: flex;
   align-items: center;
   color: #3c3c43;
+
+  background-color: ${props => {
+    if (props.translationStatus === 'Pending') {
+      return '#FF993C';
+    } else {
+      return '#9ED299';
+    }
+  }};
 `;
 
 export const TranslationDetailsButton = styled.button`
@@ -63,10 +74,16 @@ export const TranslationDetailsButton = styled.button`
   }
 `;
 
-export const FlagAndButtonContainer = styled.article`
+export const FlagAndButtonContainer = styled.article<TranslationStatusProps>`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   padding-top: 1rem;
-  gap: 5rem;
+  gap: ${props => {
+    if (props.translationStatus === 'Pending') {
+      return '5rem';
+    } else {
+      return '4rem';
+    }
+  }};
 `;

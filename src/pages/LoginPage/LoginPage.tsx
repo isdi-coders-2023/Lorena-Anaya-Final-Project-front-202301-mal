@@ -14,7 +14,7 @@ export const LoginPage = () => {
       <LoginForm />
       <RegisterLinkContainer>
         <RegisterLinkTitle>Don{"'"}t have an account?</RegisterLinkTitle>
-        <RegisterLink to={'/Register'}>Register here</RegisterLink>
+        <RegisterLink to={'/register'}>Register here</RegisterLink>
       </RegisterLinkContainer>
     </AuthPageContainer>
   );

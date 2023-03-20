@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
+import MainLayout from '../layout/MainLayout';
 import { DashboardPage } from '../pages/DasboardPage/DashboardPage';
 
 import { LoginPage } from '../pages/LoginPage/LoginPage';
@@ -10,12 +11,20 @@ const router = createBrowserRouter([
     element: <LoginPage />,
   },
   {
-    path: '/Register',
+    path: '/register',
     element: <RegisterPage />,
   },
+
   {
-    path: '/dashboard',
-    element: <DashboardPage />,
+    path: '/main',
+    element: <MainLayout />,
+
+    children: [
+      {
+        path: '/main/dashboard',
+        element: <DashboardPage />,
+      },
+    ],
   },
 ]);
 export default router;
