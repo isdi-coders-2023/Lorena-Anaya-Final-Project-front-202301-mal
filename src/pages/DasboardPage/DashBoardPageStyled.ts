@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const DashBoardPageTitle = styled.h1`
-  font-family: 'Poppins-Bold';
+export const PageTitle = styled.h1`
+  font-family: 'Poppins-Bold', sans-serif;
   font-size: 1.5rem;
   color: #000000;
   padding-top: 1rem;
