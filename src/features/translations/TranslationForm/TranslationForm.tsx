@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormContainer } from '../../auth/register/RegisterFormStyled';
-import { CreateTranslationForm, UploadLogo } from './TranslationFormStyled';
+import { CreateTranslationForm } from './TranslationFormStyled';
 
 export const TranslationForm = () => {
   return (
