@@ -19,10 +19,9 @@ export const FormTitle = styled.h1`
   font-size: 2rem;
   line-height: 47px;
   color: #fafaff;
-  margin-bottom: 1rem;
+
   @media (min-width: 600px) {
     font-size: 2.8rem;
-    margin-bottom: 3rem;
   }
 `;
 
