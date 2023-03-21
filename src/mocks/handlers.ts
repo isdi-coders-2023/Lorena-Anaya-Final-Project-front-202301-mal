@@ -12,8 +12,8 @@ export const handlers = [
         );
       } else if (translationsResponseFulfilled.translations.length > 0) {
         return res(ctx.status(200), ctx.json(translationsResponseFulfilled));
-      } else if (translationsResponseFulfilled.translations.length === 0) {
-        return res(ctx.status(200), ctx.json(translationsResponseFulfilled));
+      } else {
+        return res(ctx.status(204), ctx.json(translationsResponseFulfilled));
       }
     },
   ),
