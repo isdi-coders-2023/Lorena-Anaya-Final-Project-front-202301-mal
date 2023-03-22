@@ -36,11 +36,6 @@ export const TranslationForm = () => {
               />
               Translation succesfully created!
             </FeedBackComponent>
-            <ButtonContainer>
-              <SubmitFormButton type="submit" form="translation-form">
-                Try again
-              </SubmitFormButton>
-            </ButtonContainer>
           </>
         );
       case 'failed':
