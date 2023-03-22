@@ -3,6 +3,7 @@ import MainLayout from '../layout/MainLayout';
 import { DashboardPage } from '../pages/DasboardPage/DashboardPage';
 import { LoginPage } from '../pages/LoginPage/LoginPage';
 import { RegisterPage } from '../pages/RegisterPage/RegisterPage';
+import { TranslationDetailsPage } from '../pages/TranslationDetailsPage/TranslationDetailsPage';
 import { TranslationFormPage } from '../pages/TranslationFormPage/TranslationFormPage';
 
 const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: '/main/create',
         element: <TranslationFormPage />,
+      },
+      {
+        path: '/main/details',
+        element: <TranslationDetailsPage />,
       },
     ],
   },
