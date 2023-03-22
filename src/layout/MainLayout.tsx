@@ -23,7 +23,7 @@ const MainLayout = () => {
         <NavBar />
         <LogOut src="/assets/icons/log-out.png" alt="Log out"></LogOut>
       </Header>
-      <main style={{ height: '90%', background: '#fafaff' }}>
+      <main style={{ height: '100%', background: '#fafaff' }}>
         <Outlet />
       </main>
       <Footer>
