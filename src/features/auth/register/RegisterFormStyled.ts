@@ -22,6 +22,7 @@ export const FormTitle = styled.h1`
 
   @media (min-width: 600px) {
     font-size: 2.8rem;
+    margin-bottom: 2rem;
   }
 `;
 
