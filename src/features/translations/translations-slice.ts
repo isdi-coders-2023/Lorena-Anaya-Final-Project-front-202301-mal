@@ -40,9 +40,7 @@ export const createTranslationAsync = createAsyncThunk(
     const formData = new FormData(form);
     const apiResponse = await createTranslation(formData);
     const data: TranslationResponse = await apiResponse.json();
-    if (!apiResponse.ok) {
-      throw new Error(`${data.msg}`);
-    }
+
     return data;
   },
 );
@@ -91,8 +89,5 @@ export const selectapiStatus = (state: RootState) =>
 
 export const selectTranslations = (state: RootState) =>
   state.translationsReducer.translations;
-
-export const selectResponseMsg = (state: RootState) =>
-  state.translationsReducer.responseMsg;
 
 export default translationsSlice.reducer;
