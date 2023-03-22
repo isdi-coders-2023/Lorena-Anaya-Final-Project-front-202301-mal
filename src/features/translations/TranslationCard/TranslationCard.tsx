@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Translation } from '../../../shared/models/translation-model';
 import {
   BookingRef,
@@ -18,6 +19,10 @@ export const TranslationCard: FC<TranslationCardProps> = ({ translation }) => {
   const day = dueDate.getDate();
   const month = dueDate.getMonth();
   const year = dueDate.getFullYear();
+  const navigate = useNavigate();
+  const navigateToDetails = () => {
+    navigate('/main/details');
+  };
 
   return (
     <TranslationCardContainer>
@@ -27,7 +32,7 @@ export const TranslationCard: FC<TranslationCardProps> = ({ translation }) => {
         <PendingStatusFlag translationStatus={translation.status}>
           {translation.status}
         </PendingStatusFlag>
-        <TranslationDetailsButton type="button">
+        <TranslationDetailsButton type="button" onClick={navigateToDetails}>
           Details
         </TranslationDetailsButton>
       </FlagAndButtonContainer>
