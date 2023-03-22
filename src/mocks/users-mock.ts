@@ -6,7 +6,7 @@ export const mockedUsers = [
     lastName: 'Anaya',
     phone: '626857375',
     languages: 'Chinese, Spanish, English',
-    password: '68684f90e1f455e56f3948385c705484',
+    password: 'mock',
     translations: [],
   },
   {
@@ -16,7 +16,7 @@ export const mockedUsers = [
     lastName: 'aaaa',
     phone: '666666666',
     languages: 'es',
-    password: 'a6e7eae1c2e69cda6ba759f8b77beda0',
+    password: 'mock',
     translations: ['6419def3e4b5484f21e5f7e2'],
   },
 ];
