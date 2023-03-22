@@ -46,13 +46,16 @@ describe('Given a Translation Form component', () => {
     const words = screen.getByLabelText('Number of words:');
     await fireEvent.change(words, '1000');
 
+    const bookingRef = screen.getByLabelText('Booking ref:');
+    await fireEvent.change(bookingRef, 'T10');
+
     const source = screen.getByLabelText('Source:');
     await userEvent.selectOptions(source, ['Spanish']);
 
     const target = screen.getByText('Target:');
     await fireEvent.change(target, ['English']);
 
-    const toTranslateDoc = screen.getByLabelText('Upload translation');
+    const toTranslateDoc = screen.getByLabelText('Choose a file');
     await userEvent.upload(
       toTranslateDoc,
       new File(['(⌐□_□)'], 'document.pdf', { type: 'application/pdf' }),
@@ -96,10 +99,13 @@ describe('Given a Translation Form component', () => {
     const source = screen.getByLabelText('Source:');
     await userEvent.selectOptions(source, ['Spanish']);
 
+    const bookingRef = screen.getByLabelText('Booking ref:');
+    await fireEvent.change(bookingRef, 'T10');
+
     const target = screen.getByText('Target:');
     await fireEvent.change(target, ['English']);
 
-    const toTranslateDoc = screen.getByLabelText('Upload translation');
+    const toTranslateDoc = screen.getByLabelText('Choose a file');
     await userEvent.upload(
       toTranslateDoc,
       new File(['(⌐□_□)'], 'document.pdf', { type: 'application/pdf' }),
