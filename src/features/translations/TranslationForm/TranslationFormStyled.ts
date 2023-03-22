@@ -6,7 +6,7 @@ export const CreateTranslationForm = styled.form`
   flex-direction: column;
   align-items: center;
   min-width: 17rem;
-  max-height: 28rem;
+  max-height: 34rem;
   background-color: #ffffff;
   border-radius: 30px;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
@@ -46,6 +46,7 @@ export const CreateTranslationForm = styled.form`
     }
   }
   .input-file__label {
+    border: 2px #9ed299 solid;
     visibility: none;
     background-color: #9ed299;
     border-radius: 100px;
@@ -57,7 +58,6 @@ export const CreateTranslationForm = styled.form`
     font-size: 0.7rem;
     text-align: center;
     min-width: 10rem;
-    border: none;
     box-shadow: 0px 12px 12px #d9d9d9;
     color: #275623;
     padding: 0.3rem;
@@ -74,7 +74,7 @@ export const CreateTranslationForm = styled.form`
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    max-width: 40rem;
+    max-width: 50rem;
     padding: 3rem;
 
     .input-container {
@@ -90,7 +90,7 @@ export const CreateTranslationForm = styled.form`
       flex-wrap: wrap;
       flex-direction: row;
       justify-content: center;
-      gap: 5rem;
+      gap: 3rem;
     }
     .input-box {
       font-size: 0.8rem;
@@ -99,6 +99,7 @@ export const CreateTranslationForm = styled.form`
     }
 
     .input-file__label {
+      border: 2px #9ed299 solid;
       visibility: none;
       background-color: #9ed299;
       border-radius: 100px;
@@ -110,15 +111,13 @@ export const CreateTranslationForm = styled.form`
       font-size: 0.9rem;
       padding: 0.7rem;
       text-align: center;
-      min-width: 13rem;
-      margin-top: 1.2rem;
-      border: none;
+      min-width: 10rem;
       box-shadow: 0px 12px 12px #d9d9d9;
       color: #275623;
 
       :hover {
-        cursor: pointer;
         border: 2px #9ed299 solid;
+        cursor: pointer;
         background-color: #fafaff;
       }
     }
