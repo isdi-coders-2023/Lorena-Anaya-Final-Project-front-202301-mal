@@ -27,14 +27,21 @@ export const TranslationForm = () => {
     switch (apiStatus) {
       case 'idle':
         return (
-          <FeedBackComponent role="paragraph">
-            <img
-              className="happy-emoticon"
-              src="/assets/icons/happy.png"
-              alt="Happy face"
-            />
-            Translation succesfully created!
-          </FeedBackComponent>
+          <>
+            <FeedBackComponent role="paragraph">
+              <img
+                className="happy-emoticon"
+                src="/assets/icons/happy.png"
+                alt="Happy face"
+              />
+              Translation succesfully created!
+            </FeedBackComponent>
+            <ButtonContainer>
+              <SubmitFormButton type="submit" form="translation-form">
+                Try again
+              </SubmitFormButton>
+            </ButtonContainer>
+          </>
         );
       case 'failed':
         return (
@@ -83,7 +90,7 @@ export const TranslationForm = () => {
               </label>
               <input
                 className="input-box"
-                id="date"
+                id="dueDate"
                 type="date"
                 name="dueDate"
                 required
@@ -101,7 +108,7 @@ export const TranslationForm = () => {
             </div>
 
             <div className="input-container">
-              <label htmlFor="languageFrom"> Source:</label>
+              <label htmlFor="source"> Source:</label>
               <select className="input-box" name="languageFrom" id="source">
                 <option>English</option>
                 <option>Spanish</option>
@@ -109,7 +116,7 @@ export const TranslationForm = () => {
               </select>
             </div>
             <div className="input-container">
-              <label htmlFor="languageTo">Target:</label>
+              <label htmlFor="target">Target:</label>
               <select className="input-box" name="languageTo" id="target">
                 <option>English</option>
                 <option>Spanish</option>
@@ -117,8 +124,8 @@ export const TranslationForm = () => {
               </select>
             </div>
             <div className="input-container">
-              <label htmlFor="languages">Translator:</label>
-              <select className="input-box" name="translator" id="target">
+              <label htmlFor="translator">Translator:</label>
+              <select className="input-box" name="translator" id="translator">
                 {users.map((user: User) => (
                   <option key={user.lastName}>{user.firstName}</option>
                 ))}
