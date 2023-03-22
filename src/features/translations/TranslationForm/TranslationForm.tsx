@@ -103,6 +103,17 @@ export const TranslationForm = () => {
             </div>
 
             <div className="input-container">
+              <label htmlFor="bookingRef">Booking ref:</label>
+              <input
+                className="input-box"
+                id="bookingRef"
+                type="text"
+                name="bookingRef"
+                required
+              ></input>
+            </div>
+
+            <div className="input-container">
               <label htmlFor="source"> Source:</label>
               <select className="input-box" name="languageFrom" id="source">
                 <option>English</option>
@@ -127,8 +138,9 @@ export const TranslationForm = () => {
               </select>
             </div>
             <div className="input-container">
+              <p>Document:</p>
               <label className="input-file__label" htmlFor="toTranslateDoc">
-                Upload translation
+                Choose a file
               </label>
               <input
                 className="input-file-box"
