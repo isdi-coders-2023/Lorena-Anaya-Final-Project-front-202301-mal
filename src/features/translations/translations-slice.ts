@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 import { Translation } from '../../shared/models/translation-model';
-import { getUserTranslationsList } from './translations-api';
+import { createTranslation, getUserTranslationsList } from './translations-api';
 
 export interface TranslationResponse {
   msg: string;
@@ -34,6 +34,17 @@ export const getTranslations = createAsyncThunk(
   },
 );
 
+export const createTranslationAsync = createAsyncThunk(
+  'createTranslation/createTranslationAsync',
+  async (form: HTMLFormElement) => {
+    const formData = new FormData(form);
+    const apiResponse = await createTranslation(formData);
+    const data: TranslationResponse = await apiResponse.json();
+
+    return data;
+  },
+);
+
 export const translationsSlice = createSlice({
   name: 'translationsSlice',
   initialState,
@@ -56,6 +67,19 @@ export const translationsSlice = createSlice({
         state.status = 'failed';
         state.apiStatus = 'failed';
         state.responseMsg = action.error.message;
+      })
+      .addCase(createTranslationAsync.pending, state => {
+        state.status = 'loading';
+        state.apiStatus = 'loading';
+      })
+      .addCase(createTranslationAsync.rejected, (state, action) => {
+        state.status = 'failed';
+        state.apiStatus = 'failed';
+        state.responseMsg = action.error.message;
+      })
+      .addCase(createTranslationAsync.fulfilled, state => {
+        state.status = 'idle';
+        state.apiStatus = 'idle';
       });
   },
 });
