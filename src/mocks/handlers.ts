@@ -1,5 +1,6 @@
 import { rest } from 'msw';
 import { translationsResponseFulfilled } from './translations-mock';
+import { mockedUsers } from './users-mock';
 
 export const handlers = [
   rest.get(
@@ -58,6 +59,13 @@ export const handlers = [
       }
 
       return res(ctx.status(500), ctx.json({ msg: 'Error while login' }));
+    },
+  ),
+
+  rest.get(
+    'https://lorena-anaya-final-project-back-202301.onrender.com/user/all',
+    async (_req, res, ctx) => {
+      return res(ctx.json(mockedUsers));
     },
   ),
 ];
