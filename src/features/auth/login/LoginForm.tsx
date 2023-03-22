@@ -2,7 +2,7 @@ import { Navigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import {
   logUserAsync,
-  selectRegisterStatus,
+  selectLoginStatus,
   selectResponseMsg,
   selectStatus,
 } from '../auth-slice';
@@ -19,11 +19,11 @@ import {
 export const LoginForm = () => {
   const dispatch = useAppDispatch();
   const responseStatus = useAppSelector(selectStatus);
-  const registerStatus = useAppSelector(selectRegisterStatus);
+  const loginStatus = useAppSelector(selectLoginStatus);
   const responseMsg = useAppSelector(selectResponseMsg);
 
   const generateFeedback = () => {
-    switch (registerStatus) {
+    switch (loginStatus) {
       case 'idle':
         return (
           <>
