@@ -18,12 +18,14 @@ export interface AuthUserState {
   status: 'idle' | 'loading' | 'failed';
   registerStatus: 'loading' | 'failed' | 'idle' | 'unused';
   responseMsg: string | undefined;
+  loginStatus: 'loading' | 'failed' | 'idle' | 'unused';
   id: string;
 }
 
 const initialState: AuthUserState = {
   status: 'idle',
   registerStatus: 'unused',
+  loginStatus: 'unused',
   responseMsg: ' ',
   id: '',
 };
@@ -81,13 +83,13 @@ export const authUserSlice = createSlice({
       })
       .addCase(logUserAsync.pending, state => {
         state.status = 'loading';
-        state.registerStatus = 'loading';
+        state.loginStatus = 'loading';
       })
       .addCase(
         logUserAsync.fulfilled,
         (state, action: PayloadAction<LoginResponse>) => {
           state.status = 'idle';
-          state.registerStatus = 'idle';
+          state.loginStatus = 'idle';
           sessionStorage.setItem('Bearer', action.payload.accessToken);
           sessionStorage.setItem('Id', action.payload.id);
           state.id = action.payload.id;
@@ -95,7 +97,7 @@ export const authUserSlice = createSlice({
       )
       .addCase(logUserAsync.rejected, (state, action) => {
         state.status = 'failed';
-        state.registerStatus = 'failed';
+        state.loginStatus = 'failed';
         state.responseMsg = action.error.message;
       });
   },
@@ -105,6 +107,9 @@ export const selectStatus = (state: RootState) => state.authUserReducer.status;
 
 export const selectRegisterStatus = (state: RootState) =>
   state.authUserReducer.registerStatus;
+
+export const selectLoginStatus = (state: RootState) =>
+  state.authUserReducer.loginStatus;
 
 export const selectResponseMsg = (state: RootState) =>
   state.authUserReducer.responseMsg;
