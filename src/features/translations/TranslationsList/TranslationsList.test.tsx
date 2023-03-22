@@ -1,5 +1,6 @@
 import { waitFor, screen, render } from '@testing-library/react';
 import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
 import { store } from '../../../app/store';
 import { server } from '../../../mocks/server';
 import { translationsResponseFulfilled } from '../../../mocks/translations-mock';
@@ -12,9 +13,11 @@ describe('Given a translations card list component', () => {
 
   test('When the user logs in and the page is loaded, it should show a list of the users translations cards', async () => {
     render(
-      <Provider store={store}>
-        <TranslationsList />
-      </Provider>,
+      <MemoryRouter>
+        <Provider store={store}>
+          <TranslationsList />
+        </Provider>
+      </MemoryRouter>,
     );
 
     await waitFor(() => {
@@ -26,9 +29,11 @@ describe('Given a translations card list component', () => {
     translationsResponseFulfilled.translations = [];
 
     render(
-      <Provider store={store}>
-        <TranslationsList />
-      </Provider>,
+      <MemoryRouter>
+        <Provider store={store}>
+          <TranslationsList />
+        </Provider>
+      </MemoryRouter>,
     );
 
     await waitFor(() => {
@@ -41,9 +46,11 @@ describe('Given a translations card list component', () => {
   test('When the user logs in but the api call fails, a message should give feedback', async () => {
     translationsResponseFulfilled.failed = true;
     render(
-      <Provider store={store}>
-        <TranslationsList />
-      </Provider>,
+      <MemoryRouter>
+        <Provider store={store}>
+          <TranslationsList />
+        </Provider>
+      </MemoryRouter>,
     );
 
     await waitFor(() => {
@@ -67,9 +74,11 @@ describe('Given a translations card list component', () => {
       },
     ];
     render(
-      <Provider store={store}>
-        <TranslationsList />
-      </Provider>,
+      <MemoryRouter>
+        <Provider store={store}>
+          <TranslationsList />
+        </Provider>
+      </MemoryRouter>,
     );
 
     await waitFor(() => {
@@ -93,9 +102,11 @@ describe('Given a translations card list component', () => {
       },
     ];
     render(
-      <Provider store={store}>
-        <TranslationsList />
-      </Provider>,
+      <MemoryRouter>
+        <Provider store={store}>
+          <TranslationsList />
+        </Provider>
+      </MemoryRouter>,
     );
 
     await waitFor(() => {
