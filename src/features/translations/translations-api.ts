@@ -11,6 +11,9 @@ export const createTranslation = async (translationInfo: FormData) => {
     'https://lorena-anaya-final-project-back-202301.onrender.com/translations/create',
     {
       method: 'POST',
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem('Bearer')}`,
+      },
       body: translationInfo,
     },
   );
