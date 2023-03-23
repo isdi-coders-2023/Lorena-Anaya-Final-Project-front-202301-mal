@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../../app/hooks';
 import { Translation } from '../../../shared/models/translation-model';
 import {
   BookingRef,
@@ -9,6 +10,7 @@ import {
   TranslationCardContainer,
   TranslationDetailsButton,
 } from '../TranslationCard/TranslationCardStyled';
+import { getTranslationsByIdAsync } from '../translations-slice';
 
 interface TranslationCardProps {
   translation: Translation;
@@ -20,7 +22,11 @@ export const TranslationCard: FC<TranslationCardProps> = ({ translation }) => {
   const month = dueDate.getMonth();
   const year = dueDate.getFullYear();
   const navigate = useNavigate();
-  const navigateToDetails = () => {
+
+  const dispatch = useAppDispatch();
+
+  const navigateToDetails = async () => {
+    await dispatch(getTranslationsByIdAsync(translation._id));
     navigate('/main/details');
   };
 
