@@ -1,11 +1,18 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 import { Translation } from '../../shared/models/translation-model';
-import { createTranslation, getUserTranslationsList } from './translations-api';
+import {
+  createTranslation,
+  getTranslationById,
+  getUserTranslationsList,
+} from './translations-api';
 
 export interface TranslationResponse {
   msg: string;
   translations: Translation[];
+  translation: {
+    translation: Translation;
+  };
 }
 
 export interface TranslationState {
@@ -13,19 +20,44 @@ export interface TranslationState {
   apiStatus: 'loading' | 'failed' | 'idle' | 'unused';
   responseMsg: string | undefined;
   translations: Translation[];
+  translation: Translation;
 }
+
+const emptyTranslation: Translation = {
+  bookingRef: '',
+  dueDate: ' ',
+  languageFrom: '',
+  languageTo: '',
+  words: 0,
+  status: '',
+  toTranslateDoc: '',
+  translatedDoc: '',
+  _id: 'ASS',
+};
 
 const initialState: TranslationState = {
   status: 'idle',
   apiStatus: 'unused',
   responseMsg: ' ',
   translations: [],
+  translation: emptyTranslation,
 };
-
 export const getTranslations = createAsyncThunk(
   'getTranslations/getTranslationsList',
   async (id: string) => {
     const apiResponse = await getUserTranslationsList(id);
+    const data = await apiResponse.json();
+    if (!apiResponse.ok) {
+      throw new Error(`${data.msg}`);
+    }
+    return data;
+  },
+);
+
+export const getTranslationsByIdAsync = createAsyncThunk(
+  'getTranslationById/getTranslationByIdAsync',
+  async (id: string) => {
+    const apiResponse = await getTranslationById(id);
     const data = await apiResponse.json();
     if (!apiResponse.ok) {
       throw new Error(`${data.msg}`);
@@ -80,6 +112,23 @@ export const translationsSlice = createSlice({
       .addCase(createTranslationAsync.fulfilled, state => {
         state.status = 'idle';
         state.apiStatus = 'idle';
+      })
+      .addCase(getTranslationsByIdAsync.pending, state => {
+        state.status = 'loading';
+        state.apiStatus = 'loading';
+      })
+      .addCase(
+        getTranslationsByIdAsync.fulfilled,
+        (state, action: PayloadAction<TranslationResponse>) => {
+          state.status = 'idle';
+          state.apiStatus = 'idle';
+          state.translation = action.payload.translation.translation;
+        },
+      )
+      .addCase(getTranslationsByIdAsync.rejected, (state, action) => {
+        state.status = 'failed';
+        state.apiStatus = 'failed';
+        state.responseMsg = action.error.message;
       });
   },
 });
@@ -89,5 +138,8 @@ export const selectapiStatus = (state: RootState) =>
 
 export const selectTranslations = (state: RootState) =>
   state.translationsReducer.translations;
+
+export const selectTranslation = (state: RootState) =>
+  state.translationsReducer.translation;
 
 export default translationsSlice.reducer;
