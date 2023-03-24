@@ -63,3 +63,7 @@ export const InfoContainer = styled.article`
     font-size: 1.3rem;
   }
 `;
+
+export const DownloadLink = styled.a`
+  color: #275623;
+`;

@@ -54,7 +54,7 @@ describe('Given a translations card list component', () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByText('FALLO DEL SERVIDOR')).toBeInTheDocument();
+      expect(screen.getByText('Oopss!')).toBeInTheDocument();
     });
   });
 

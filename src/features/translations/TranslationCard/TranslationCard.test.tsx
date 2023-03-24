@@ -1,28 +1,40 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
 import { MemoryRouter } from 'react-router-dom';
+
+import { server } from '../../../mocks/server';
+import { renderWithProviders } from '../../../mocks/test-util';
+
 import { TranslationCard } from './TranslationCard';
 
-test('navigate to details page on button click', () => {
-  const translation = {
-    bookingRef: 'ABC123',
-    dueDate: new Date('4'),
-    status: 'Pending',
-    translator: 'Pepe',
-    languageFrom: 'esperanto',
-    languageTo: 'chino',
-    words: 223832,
-    toTranslateDoc: 'url',
-    translatedDoc: 'yrl2',
-  };
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
 
-  render(
-    <MemoryRouter>
-      <TranslationCard translation={translation} />
-    </MemoryRouter>,
-  );
+describe('Given a translation card component', () => {
+  test('navigate to details page on button click', async () => {
+    const translation = {
+      bookingRef: 'ABC123',
+      dueDate: '3',
+      status: 'Pending',
+      translator: 'Pepe',
+      languageFrom: 'esperanto',
+      languageTo: 'chino',
+      words: 223832,
+      toTranslateDoc: 'url',
+      translatedDoc: 'yrl2',
+      _id: 'mockId',
+    };
 
-  const detailsButton = screen.getByRole('button');
-  fireEvent.click(detailsButton);
+    renderWithProviders(
+      <MemoryRouter>
+        <TranslationCard translation={translation} />
+      </MemoryRouter>,
+    );
 
-  expect(window.location.pathname).toBe('/');
+    await userEvent.click(screen.getByRole('link'));
+
+    expect(window.location.pathname).toEqual('/');
+  });
 });

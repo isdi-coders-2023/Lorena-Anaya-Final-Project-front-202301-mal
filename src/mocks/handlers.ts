@@ -1,5 +1,8 @@
 import { rest } from 'msw';
-import { translationsResponseFulfilled } from './translations-mock';
+import {
+  translationResponseFulfilled,
+  translationsResponseFulfilled,
+} from './translations-mock';
 import { mockedUsers } from './users-mock';
 
 export const handlers = [
@@ -66,6 +69,20 @@ export const handlers = [
     'https://lorena-anaya-final-project-back-202301.onrender.com/user/all',
     async (_req, res, ctx) => {
       return res(ctx.json(mockedUsers));
+    },
+  ),
+
+  rest.get(
+    `https://lorena-anaya-final-project-back-202301.onrender.com/translations/:id`,
+    (_req, res, ctx) => {
+      if (translationResponseFulfilled.failed) {
+        return res(
+          ctx.status(500),
+          ctx.json({ msg: 'Error while fetching translations' }),
+        );
+      } else {
+        return res(ctx.status(200), ctx.json(translationResponseFulfilled));
+      }
     },
   ),
 ];
