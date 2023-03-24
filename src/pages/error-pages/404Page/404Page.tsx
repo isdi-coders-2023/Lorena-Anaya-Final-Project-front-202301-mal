@@ -15,7 +15,7 @@ export const NotFoundPage = () => {
       <ErrorPageContainer>
         <ErrorTitle>404</ErrorTitle>
         <ErrorSubtitle>
-          Sorry, the page you were looking for doesn’t exists.
+          Sorry, the page you were looking for doesn’t exist.
         </ErrorSubtitle>
         <GoBackButton to={'/main/dashboard'}>Go back</GoBackButton>
       </ErrorPageContainer>
