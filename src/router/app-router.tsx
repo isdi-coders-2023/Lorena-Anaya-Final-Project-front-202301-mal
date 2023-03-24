@@ -28,17 +28,14 @@ const router = createBrowserRouter([
       {
         path: '/main/dashboard',
         element: <DashboardPage />,
-        errorElement: <NotFoundPage />,
       },
       {
         path: '/main/create',
         element: <TranslationFormPage />,
-        errorElement: <NotFoundPage />,
       },
       {
-        path: '/main/details',
+        path: '/main/details/:translationId',
         element: <TranslationDetailsPage />,
-        errorElement: <NotFoundPage />,
       },
     ],
   },
