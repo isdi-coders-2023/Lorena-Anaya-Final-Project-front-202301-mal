@@ -26,3 +26,20 @@ export const translationsResponseFulfilled = {
   failed: false,
   idle: true,
 };
+
+export const translationResponseFulfilled = {
+  translation: {
+    translation: {
+      _id: '6413680f586fb0d357277c93',
+      bookingRef: 'T1',
+      dueDate: '2023-04-03T22:00:00.000Z',
+      languageFrom: 'English',
+      languageTo: 'Spanish',
+      words: 456,
+      status: 'Pending',
+      toTranslateDoc: 'url',
+      translatedDoc: 'url',
+    },
+  },
+  failed: true,
+};
