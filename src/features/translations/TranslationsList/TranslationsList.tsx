@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { ServerErrorPage } from '../../../pages/error-pages/ServerError/ServerError';
 import { Translation } from '../../../shared/models/translation-model';
 import { selectResponseId } from '../../auth/auth-slice';
 import { TranslationCard } from '../TranslationCard/TranslationCard';
@@ -22,10 +23,9 @@ const TranslationsList = () => {
   useEffect(() => {
     dispatch(getTranslations(userId));
   }, [dispatch, userId]);
-
   return (
     <div>
-      {apiStatus === 'failed' && <p>FALLO DEL SERVIDOR</p>}
+      {apiStatus === 'failed' && <ServerErrorPage />}
       {apiStatus === 'loading' && (
         <TranslationsFeedbackComponent>
           {`Loading your translations...`}
