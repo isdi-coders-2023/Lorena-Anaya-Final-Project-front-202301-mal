@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 interface TranslationStatusProps {
@@ -56,24 +57,6 @@ export const PendingStatusFlag = styled.div<TranslationStatusProps>`
   }};
 `;
 
-export const TranslationDetailsButton = styled.button`
-  padding: 8px;
-  background: #00a2a1;
-  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 100px;
-  border: none;
-  font-family: 'SourceCodePro-Regular', sans-serif;
-  font-size: 0.9rem;
-  border: 2px solid #00a2a1;
-  color: #ffffff;
-  :hover {
-    cursor: pointer;
-    color: #00a2a1;
-    background: #fafaff;
-    font-family: 'SourceCodePro-Bold', sans-serif;
-  }
-`;
-
 export const FlagAndButtonContainer = styled.article<TranslationStatusProps>`
   display: flex;
   flex-direction: row;
@@ -86,4 +69,23 @@ export const FlagAndButtonContainer = styled.article<TranslationStatusProps>`
       return '4rem';
     }
   }};
+`;
+
+export const DetailsLink = styled(Link)`
+  padding: 8px;
+  background: #00a2a1;
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  border: none;
+  font-family: 'SourceCodePro-Regular', sans-serif;
+  font-size: 0.9rem;
+  border: 2px solid #00a2a1;
+  text-decoration: none;
+  color: #ffffff;
+  :hover {
+    cursor: pointer;
+    color: #00a2a1;
+    background: #fafaff;
+    font-family: 'SourceCodePro-Bold', sans-serif;
+  }
 `;
