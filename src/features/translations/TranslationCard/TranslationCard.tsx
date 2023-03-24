@@ -1,16 +1,14 @@
 import { FC } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../../app/hooks';
+
 import { Translation } from '../../../shared/models/translation-model';
 import {
   BookingRef,
+  DetailsLink,
   DueDate,
   FlagAndButtonContainer,
   PendingStatusFlag,
   TranslationCardContainer,
-  TranslationDetailsButton,
 } from '../TranslationCard/TranslationCardStyled';
-import { getTranslationsByIdAsync } from '../translations-slice';
 
 interface TranslationCardProps {
   translation: Translation;
@@ -21,14 +19,6 @@ export const TranslationCard: FC<TranslationCardProps> = ({ translation }) => {
   const day = dueDate.getDate();
   const month = dueDate.getMonth();
   const year = dueDate.getFullYear();
-  const navigate = useNavigate();
-
-  const dispatch = useAppDispatch();
-
-  const navigateToDetails = async () => {
-    await dispatch(getTranslationsByIdAsync(translation._id));
-    navigate('/main/details');
-  };
 
   return (
     <TranslationCardContainer>
@@ -38,9 +28,10 @@ export const TranslationCard: FC<TranslationCardProps> = ({ translation }) => {
         <PendingStatusFlag translationStatus={translation.status}>
           {translation.status}
         </PendingStatusFlag>
-        <TranslationDetailsButton type="button" onClick={navigateToDetails}>
+
+        <DetailsLink to={`/main/details/${translation._id}`}>
           Details
-        </TranslationDetailsButton>
+        </DetailsLink>
       </FlagAndButtonContainer>
     </TranslationCardContainer>
   );
