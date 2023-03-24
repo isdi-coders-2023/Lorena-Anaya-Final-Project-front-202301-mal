@@ -32,7 +32,7 @@ const emptyTranslation: Translation = {
   status: '',
   toTranslateDoc: '',
   translatedDoc: '',
-  _id: 'ASS',
+  _id: '123',
 };
 
 const initialState: TranslationState = {
