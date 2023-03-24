@@ -1,5 +1,7 @@
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
+import { useAppDispatch } from '../app/hooks';
 import { NavBar } from '../components/NavBar/NavBar';
+import { logoutUser } from '../features/auth/auth-slice';
 import {
   Footer,
   FooterInfo,
@@ -12,6 +14,11 @@ import {
 } from './MainLayoutStyled';
 
 const MainLayout = () => {
+  const dispatch = useAppDispatch();
+  const handleLogout = () => {
+    sessionStorage.removeItem('accessToken');
+    dispatch(logoutUser());
+  };
   return (
     <>
       <Header>
@@ -21,7 +28,9 @@ const MainLayout = () => {
           <Welcoming>Welcome back to your account.</Welcoming>
         </GreetingContainer>
         <NavBar />
-        <LogOut src="/assets/icons/log-out.png" alt="Log out"></LogOut>
+        <Link to={'/'} onClick={() => handleLogout()} data-testid="logout-btn">
+          <LogOut src="/assets/icons/log-out.png" alt="Log out"></LogOut>
+        </Link>
       </Header>
       <main style={{ height: '100%', background: '#fafaff' }}>
         <Outlet />
