@@ -66,7 +66,4 @@ export const InfoContainer = styled.article`
 
 export const DownloadLink = styled.a`
   color: #275623;
-  ::hover {
-    color: #9ed299;
-  }
 `;
