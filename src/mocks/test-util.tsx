@@ -38,6 +38,7 @@ export const renderWithProviders = (
         responseMsg: ' ',
         translations: [],
         translation: emptyTranslation,
+        uploadTranslationStatus: 'unused',
       },
       usersReducer: {
         users: [],
