@@ -106,7 +106,6 @@ export const updateTranslationStatusAsync = createAsyncThunk(
   async ({ status, id }: UpdateTranslationStatusArgs) => {
     const apiResponse = await updateTranslationStatus(status, id);
     const data: TranslationResponse = await apiResponse.json();
-    console.log(data, 'este es el data');
     return data;
   },
 );
