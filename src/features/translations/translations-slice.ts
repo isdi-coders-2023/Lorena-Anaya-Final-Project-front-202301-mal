@@ -6,6 +6,7 @@ import {
   getTranslationById,
   getUserTranslationsList,
   updateTranslationById,
+  updateTranslationStatus,
 } from './translations-api';
 
 export interface TranslationResponse {
@@ -31,7 +32,7 @@ const emptyTranslation: Translation = {
   languageFrom: '',
   languageTo: '',
   words: 0,
-  status: '',
+  status: 'Pending',
   toTranslateDoc: '',
   translatedDoc: '',
   _id: '123',
@@ -91,6 +92,21 @@ export const updateTranslationByIdAsync = createAsyncThunk(
     const apiResponse = await updateTranslationById(formData, id);
     const data: TranslationResponse = await apiResponse.json();
 
+    return data;
+  },
+);
+
+export interface UpdateTranslationStatusArgs {
+  status: string;
+  id: string;
+}
+
+export const updateTranslationStatusAsync = createAsyncThunk(
+  'updateTranslationStatus/updateTranslationStatusAsync',
+  async ({ status, id }: UpdateTranslationStatusArgs) => {
+    const apiResponse = await updateTranslationStatus(status, id);
+    const data: TranslationResponse = await apiResponse.json();
+    console.log(data, 'este es el data');
     return data;
   },
 );
@@ -160,7 +176,6 @@ export const translationsSlice = createSlice({
       .addCase(updateTranslationByIdAsync.fulfilled, state => {
         state.status = 'idle';
         state.uploadTranslationStatus = 'idle';
-        state.translation.status = 'Pending';
       });
   },
 });
@@ -176,5 +191,8 @@ export const selectTranslation = (state: RootState) =>
 
 export const selectTranslationUploadStatus = (state: RootState) =>
   state.translationsReducer.uploadTranslationStatus;
+
+export const selectTranslationStatus = (state: RootState) =>
+  state.translationsReducer.translation.status;
 
 export default translationsSlice.reducer;
