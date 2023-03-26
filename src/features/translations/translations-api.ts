@@ -51,3 +51,22 @@ export const updateTranslationById = async (
 
   return response;
 };
+
+export const updateTranslationStatus = async (
+  translationStatus: string,
+  id: string,
+) => {
+  const response = await fetch(
+    `https://lorena-anaya-final-project-back-202301.onrender.com/translations/status/${id}`,
+    {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem('Bearer')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ status: translationStatus }),
+    },
+  );
+
+  return response;
+};
