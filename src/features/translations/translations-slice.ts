@@ -191,7 +191,4 @@ export const selectTranslation = (state: RootState) =>
 export const selectTranslationUploadStatus = (state: RootState) =>
   state.translationsReducer.uploadTranslationStatus;
 
-export const selectTranslationStatus = (state: RootState) =>
-  state.translationsReducer.translation.status;
-
 export default translationsSlice.reducer;
