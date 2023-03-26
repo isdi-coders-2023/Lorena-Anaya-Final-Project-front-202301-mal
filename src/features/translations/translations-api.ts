@@ -33,3 +33,21 @@ export const getTranslationById = async (id: string) => {
 
   return response;
 };
+
+export const updateTranslationById = async (
+  updatedTranslation: FormData,
+  id: string,
+) => {
+  const response = await fetch(
+    `https://lorena-anaya-final-project-back-202301.onrender.com/translations/${id}`,
+    {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem('Bearer')}`,
+      },
+      body: updatedTranslation,
+    },
+  );
+
+  return response;
+};
