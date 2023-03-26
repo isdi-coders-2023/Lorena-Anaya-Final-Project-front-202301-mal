@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import {
   logUserAsync,
   selectLoginStatus,
+  selectResponseId,
   selectResponseMsg,
   selectStatus,
 } from '../auth-slice';
@@ -21,6 +22,7 @@ export const LoginForm = () => {
   const responseStatus = useAppSelector(selectStatus);
   const loginStatus = useAppSelector(selectLoginStatus);
   const responseMsg = useAppSelector(selectResponseMsg);
+  const userId = useAppSelector(selectResponseId);
 
   const generateFeedback = () => {
     switch (loginStatus) {
@@ -34,7 +36,11 @@ export const LoginForm = () => {
                 alt="Happy face"
               />
             </FeedBackComponent>
-            <Navigate to={'/main/dashboard'} />
+            {userId === '641f744f4ed786867216a792' ? (
+              <Navigate to={'/admin/create'} />
+            ) : (
+              <Navigate to={'/main/dashboard'} />
+            )}
           </>
         );
       case 'failed':

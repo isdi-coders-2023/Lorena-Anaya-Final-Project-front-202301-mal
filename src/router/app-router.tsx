@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
+import AdminMainLayout from '../layout/AdminMainLayout';
 import MainLayout from '../layout/MainLayout';
 import { DashboardPage } from '../pages/DasboardPage/DashboardPage';
 import { NotFoundPage } from '../pages/error-pages/404Page/404Page';
@@ -18,6 +19,17 @@ const router = createBrowserRouter([
     element: <RegisterPage />,
     errorElement: <NotFoundPage />,
   },
+  {
+    path: '/admin',
+    element: <AdminMainLayout />,
+    errorElement: <NotFoundPage />,
+    children: [
+      {
+        path: '/admin/create',
+        element: <TranslationFormPage />,
+      },
+    ],
+  },
 
   {
     path: '/main',
@@ -28,10 +40,6 @@ const router = createBrowserRouter([
       {
         path: '/main/dashboard',
         element: <DashboardPage />,
-      },
-      {
-        path: '/main/create',
-        element: <TranslationFormPage />,
       },
       {
         path: '/main/details/:translationId',

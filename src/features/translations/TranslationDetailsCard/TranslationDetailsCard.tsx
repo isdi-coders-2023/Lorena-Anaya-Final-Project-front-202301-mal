@@ -4,9 +4,15 @@ import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { NotFoundPage } from '../../../pages/error-pages/404Page/404Page';
 import { Translation } from '../../../shared/models/translation-model';
 import {
+  ErrorFeedbackComponent,
+  FeedBackComponent,
+} from '../../auth/register/RegisterFormStyled';
+import {
   getTranslationsByIdAsync,
   selectapiStatus,
   selectTranslation,
+  selectTranslationUploadStatus,
+  updateTranslationByIdAsync,
 } from '../translations-slice';
 import { TranslationsFeedbackComponent } from '../TranslationsList/TranslationsListStyled';
 import {
@@ -16,12 +22,18 @@ import {
   PropertyInfo,
   TranslationCardContainer,
   TranslationDetailsCardStyled,
+  UploadButton,
+  UploadButtonContainer,
+  UploadContainer,
+  UploadText,
 } from './TranslationDetailsCardStyled';
 
 export const TranslationDetailsCard = () => {
   const translation: Translation = useAppSelector(selectTranslation);
 
   const apiStatus = useAppSelector(selectapiStatus);
+
+  const uploadStatus = useAppSelector(selectTranslationUploadStatus);
 
   const dispatch = useAppDispatch();
 
@@ -35,6 +47,47 @@ export const TranslationDetailsCard = () => {
   const day = dueDate.getDate();
   const month = dueDate.getMonth();
   const year = dueDate.getFullYear();
+
+  const generateFeedback = () => {
+    switch (uploadStatus) {
+      case 'idle':
+        return (
+          <>
+            <FeedBackComponent role="paragraph">
+              <img
+                className="happy-emoticon"
+                src="/assets/icons/happy.png"
+                alt="Happy face"
+              />
+              Translation succesfully uploaded!
+            </FeedBackComponent>
+          </>
+        );
+      case 'failed':
+        return (
+          <>
+            <ErrorFeedbackComponent role="paragraph">
+              <img
+                className="sad-emoticon"
+                src="/assets/icons/sad.png"
+                alt="Sad face"
+              />
+              The translation couldn’t be uploaded, please try again.
+            </ErrorFeedbackComponent>
+            <UploadButtonContainer>
+              <UploadButton>Upload</UploadButton>
+            </UploadButtonContainer>
+          </>
+        );
+
+      default:
+        return (
+          <UploadButtonContainer>
+            <UploadButton>Upload</UploadButton>
+          </UploadButtonContainer>
+        );
+    }
+  };
 
   if (apiStatus === 'idle' && translation._id !== undefined) {
     return (
@@ -88,18 +141,42 @@ export const TranslationDetailsCard = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Download
+                  Click to download
                 </DownloadLink>
               </PropertyInfo>
             </InfoContainer>
-
-            <InfoContainer>
-              <Property role="paragraph">Doc translated:</Property>
-              <PropertyInfo role="paragraph">
-                {translation.translatedDoc}
-              </PropertyInfo>
-            </InfoContainer>
           </TranslationDetailsCardStyled>
+          <UploadContainer>
+            <UploadText role="paragraph">
+              Upload here your translation once completed:
+            </UploadText>
+            <form
+              onSubmit={e => {
+                e.preventDefault();
+                const form = e.currentTarget;
+                const id = translationId as string;
+                dispatch(updateTranslationByIdAsync({ form, id: id }));
+              }}
+            >
+              <label className="input-file__label" htmlFor="translatedDoc">
+                Click to choose a file
+              </label>
+              <input
+                className="input-file-box"
+                id="translatedDoc"
+                type="file"
+                name="translatedDoc"
+                accept=".pdf"
+                style={{ visibility: 'hidden' }}
+                required
+              ></input>
+              {uploadStatus === 'loading' ? (
+                <FeedBackComponent>Loading...</FeedBackComponent>
+              ) : (
+                generateFeedback()
+              )}
+            </form>
+          </UploadContainer>
         </TranslationCardContainer>
       </>
     );

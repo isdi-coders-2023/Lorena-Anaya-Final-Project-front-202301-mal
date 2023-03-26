@@ -5,7 +5,6 @@ export const Footer = styled.footer`
   flex-direction: row;
   justify-content: space-between;
   box-sizing: border-box;
-
   background-color: #fafaff;
   border-top: 1px solid #d9d9d9;
 `;
@@ -13,11 +12,12 @@ export const Footer = styled.footer`
 export const FooterInfo = styled.p`
   font-family: 'Rubik-Medium', sans-serif;
   font-size: 8px;
-  line-height: 32px;
+
   color: #0a142f;
   padding-left: 0.2rem;
   padding-right: 0.2rem;
-  @media (min-width: 600px) {
+
+  @media (min-width: 720px) {
     padding-left: 0.9rem;
     padding-right: 0.9rem;
   }
@@ -87,4 +87,10 @@ export const Welcoming = styled.h2`
     align-items: center;
     color: #161616;
   }
+`;
+
+export const Main = styled.main`
+  width: 100%;
+  min-height: 100vh;
+  background-color: '#fafaff';
 `;

@@ -5,6 +5,7 @@ import {
   createTranslation,
   getTranslationById,
   getUserTranslationsList,
+  updateTranslationById,
 } from './translations-api';
 
 export interface TranslationResponse {
@@ -18,6 +19,7 @@ export interface TranslationResponse {
 export interface TranslationState {
   status: 'idle' | 'loading' | 'failed';
   apiStatus: 'loading' | 'failed' | 'idle' | 'unused';
+  uploadTranslationStatus: 'loading' | 'failed' | 'idle' | 'unused';
   responseMsg: string | undefined;
   translations: Translation[];
   translation: Translation;
@@ -41,6 +43,7 @@ const initialState: TranslationState = {
   responseMsg: ' ',
   translations: [],
   translation: emptyTranslation,
+  uploadTranslationStatus: 'unused',
 };
 export const getTranslations = createAsyncThunk(
   'getTranslations/getTranslationsList',
@@ -71,6 +74,21 @@ export const createTranslationAsync = createAsyncThunk(
   async (form: HTMLFormElement) => {
     const formData = new FormData(form);
     const apiResponse = await createTranslation(formData);
+    const data: TranslationResponse = await apiResponse.json();
+
+    return data;
+  },
+);
+
+export interface UpdateTranslationArgs {
+  form: HTMLFormElement;
+  id: string;
+}
+export const updateTranslationByIdAsync = createAsyncThunk(
+  'updateTranslationById/updateTranslationByIdAsync',
+  async ({ form, id }: UpdateTranslationArgs) => {
+    const formData = new FormData(form);
+    const apiResponse = await updateTranslationById(formData, id);
     const data: TranslationResponse = await apiResponse.json();
 
     return data;
@@ -129,6 +147,20 @@ export const translationsSlice = createSlice({
         state.status = 'failed';
         state.apiStatus = 'failed';
         state.responseMsg = action.error.message;
+      })
+      .addCase(updateTranslationByIdAsync.pending, state => {
+        state.status = 'loading';
+        state.uploadTranslationStatus = 'loading';
+      })
+      .addCase(updateTranslationByIdAsync.rejected, (state, action) => {
+        state.status = 'failed';
+        state.uploadTranslationStatus = 'failed';
+        state.responseMsg = action.error.message;
+      })
+      .addCase(updateTranslationByIdAsync.fulfilled, state => {
+        state.status = 'idle';
+        state.uploadTranslationStatus = 'idle';
+        state.translation.status = 'Pending';
       });
   },
 });
@@ -141,5 +173,8 @@ export const selectTranslations = (state: RootState) =>
 
 export const selectTranslation = (state: RootState) =>
   state.translationsReducer.translation;
+
+export const selectTranslationUploadStatus = (state: RootState) =>
+  state.translationsReducer.uploadTranslationStatus;
 
 export default translationsSlice.reducer;
