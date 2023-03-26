@@ -13,6 +13,7 @@ import {
   selectTranslation,
   selectTranslationUploadStatus,
   updateTranslationByIdAsync,
+  updateTranslationStatusAsync,
 } from '../translations-slice';
 import { TranslationsFeedbackComponent } from '../TranslationsList/TranslationsListStyled';
 import {
@@ -156,6 +157,9 @@ export const TranslationDetailsCard = () => {
                 const form = e.currentTarget;
                 const id = translationId as string;
                 dispatch(updateTranslationByIdAsync({ form, id: id }));
+                dispatch(
+                  updateTranslationStatusAsync({ status: 'Completed', id: id }),
+                );
               }}
             >
               <label className="input-file__label" htmlFor="translatedDoc">
