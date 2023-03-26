@@ -10,6 +10,7 @@ import {
   Header,
   Logo,
   LogOut,
+  Main,
   Welcoming,
 } from './MainLayoutStyled';
 
@@ -32,9 +33,9 @@ const MainLayout = () => {
           <LogOut src="/assets/icons/log-out.png" alt="Log out"></LogOut>
         </Link>
       </Header>
-      <main style={{ height: '100%', background: '#fafaff' }}>
+      <Main style={{ background: '#fafaff' }}>
         <Outlet />
-      </main>
+      </Main>
       <Footer>
         <FooterInfo role="paragraph">info@btc365.net</FooterInfo>
         <FooterInfo role="paragraph">
