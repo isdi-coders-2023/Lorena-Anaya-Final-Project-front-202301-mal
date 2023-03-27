@@ -39,6 +39,8 @@ export const renderWithProviders = (
         translations: [],
         translation: emptyTranslation,
         uploadTranslationStatus: 'unused',
+        adminTranslations: [],
+        adminTranslationsStatus: 'unused',
       },
       usersReducer: {
         users: [],

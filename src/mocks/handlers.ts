@@ -1,5 +1,6 @@
 import { rest } from 'msw';
 import {
+  adminTranslationsResponseFulfilled,
   translationResponseFulfilled,
   translationsResponseFulfilled,
 } from './translations-mock';
@@ -71,6 +72,27 @@ export const handlers = [
       return res(ctx.json(mockedUsers));
     },
   ),
+  rest.get(
+    `https://lorena-anaya-final-project-back-202301.onrender.com/translations`,
+    (req, res, ctx) => {
+      if (adminTranslationsResponseFulfilled.failed) {
+        return res(
+          ctx.status(500),
+          ctx.json({ msg: 'Error while fetching translations' }),
+        );
+      } else if (translationsResponseFulfilled.translations.length > 0) {
+        return res(
+          ctx.status(200),
+          ctx.json(adminTranslationsResponseFulfilled),
+        );
+      } else {
+        return res(
+          ctx.status(204),
+          ctx.json(adminTranslationsResponseFulfilled),
+        );
+      }
+    },
+  ),
 
   rest.get(
     `https://lorena-anaya-final-project-back-202301.onrender.com/translations/:id`,
@@ -83,6 +105,13 @@ export const handlers = [
       } else {
         return res(ctx.status(200), ctx.json(translationResponseFulfilled));
       }
+    },
+  ),
+
+  rest.patch(
+    `https://lorena-anaya-final-project-back-202301.onrender.com/translations/status/undefined`,
+    (_req, res, ctx) => {
+      return res(ctx.status(200), ctx.json(translationResponseFulfilled));
     },
   ),
 ];
