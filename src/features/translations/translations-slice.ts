@@ -4,6 +4,7 @@ import { Translation } from '../../shared/models/translation-model';
 import {
   createTranslation,
   getTranslationById,
+  getTranslationsList,
   getUserTranslationsList,
   updateTranslationById,
   updateTranslationStatus,
@@ -15,6 +16,7 @@ export interface TranslationResponse {
   translation: {
     translation: Translation;
   };
+  adminTranslations: Translation[];
 }
 
 export interface TranslationState {
@@ -24,6 +26,8 @@ export interface TranslationState {
   responseMsg: string | undefined;
   translations: Translation[];
   translation: Translation;
+  adminTranslations: Translation[];
+  adminTranslationsStatus: 'loading' | 'failed' | 'idle' | 'unused';
 }
 
 const emptyTranslation: Translation = {
@@ -45,15 +49,33 @@ const initialState: TranslationState = {
   translations: [],
   translation: emptyTranslation,
   uploadTranslationStatus: 'unused',
+  adminTranslations: [],
+  adminTranslationsStatus: 'unused',
 };
 export const getTranslations = createAsyncThunk(
   'getTranslations/getTranslationsList',
   async (id: string) => {
     const apiResponse = await getUserTranslationsList(id);
     const data = await apiResponse.json();
+
     if (!apiResponse.ok) {
       throw new Error(`${data.msg}`);
     }
+
+    return data;
+  },
+);
+
+export const getAllTranslationsAsync = createAsyncThunk(
+  'getTranslationsList/getAllTranslationsAsync',
+  async () => {
+    const apiResponse = await getTranslationsList();
+    const data = await apiResponse.json();
+
+    if (!apiResponse.ok) {
+      throw new Error(`${data.msg}`);
+    }
+
     return data;
   },
 );
@@ -175,6 +197,23 @@ export const translationsSlice = createSlice({
       .addCase(updateTranslationByIdAsync.fulfilled, state => {
         state.status = 'idle';
         state.uploadTranslationStatus = 'idle';
+      })
+      .addCase(getAllTranslationsAsync.pending, state => {
+        state.status = 'loading';
+        state.adminTranslationsStatus = 'loading';
+      })
+      .addCase(
+        getAllTranslationsAsync.fulfilled,
+        (state, action: PayloadAction<TranslationResponse>) => {
+          state.status = 'idle';
+          state.adminTranslationsStatus = 'idle';
+          state.adminTranslations = action.payload.adminTranslations;
+        },
+      )
+      .addCase(getAllTranslationsAsync.rejected, (state, action) => {
+        state.status = 'failed';
+        state.adminTranslationsStatus = 'failed';
+        state.responseMsg = action.error.message;
       });
   },
 });
@@ -182,8 +221,14 @@ export const translationsSlice = createSlice({
 export const selectapiStatus = (state: RootState) =>
   state.translationsReducer.apiStatus;
 
+export const selectadminTranslationsStatus = (state: RootState) =>
+  state.translationsReducer.adminTranslationsStatus;
+
 export const selectTranslations = (state: RootState) =>
   state.translationsReducer.translations;
+
+export const selectAdminTranslations = (state: RootState) =>
+  state.translationsReducer.adminTranslations;
 
 export const selectTranslation = (state: RootState) =>
   state.translationsReducer.translation;

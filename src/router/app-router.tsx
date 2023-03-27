@@ -1,7 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 import AdminMainLayout from '../layout/AdminMainLayout';
 import MainLayout from '../layout/MainLayout';
-import { DashboardPage } from '../pages/DasboardPage/DashboardPage';
+import { AdminDashboardPage } from '../pages/DashboardPage/AdminDashboardPage/AdminDashboardPage';
+import { DashboardPage } from '../pages/DashboardPage/TranslatorDasboardPage/TranslatorDashboardPage';
 import { NotFoundPage } from '../pages/error-pages/404Page/404Page';
 import { LoginPage } from '../pages/LoginPage/LoginPage';
 import { RegisterPage } from '../pages/RegisterPage/RegisterPage';
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: '/admin/create',
         element: <TranslationFormPage />,
+      },
+      {
+        path: '/admin/dashboard',
+        element: <AdminDashboardPage />,
       },
     ],
   },

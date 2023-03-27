@@ -1,9 +1,9 @@
 import { waitFor, screen, render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
-import { store } from '../../../app/store';
-import { server } from '../../../mocks/server';
-import { translationsResponseFulfilled } from '../../../mocks/translations-mock';
+import { store } from '../../../../app/store';
+import { server } from '../../../../mocks/server';
+import { translationsResponseFulfilled } from '../../../../mocks/translations-mock';
 import TranslationsList from './TranslationsList';
 
 describe('Given a translations card list component', () => {

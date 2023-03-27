@@ -1,5 +1,5 @@
 import { TranslationForm } from '../../features/translations/TranslationForm/TranslationForm';
-import { PageTitle } from '../DasboardPage/DashBoardPageStyled';
+import { PageTitle } from '../DashboardPage/DashBoardPageStyled';
 
 export const TranslationFormPage = () => {
   return (

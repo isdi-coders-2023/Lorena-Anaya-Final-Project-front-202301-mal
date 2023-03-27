@@ -15,7 +15,7 @@ import {
   updateTranslationByIdAsync,
   updateTranslationStatusAsync,
 } from '../translations-slice';
-import { TranslationsFeedbackComponent } from '../TranslationsList/TranslationsListStyled';
+import { TranslationsFeedbackComponent } from '../TranslationList/TranslatorTranslationsList/TranslationsListStyled';
 import {
   DownloadLink,
   InfoContainer,

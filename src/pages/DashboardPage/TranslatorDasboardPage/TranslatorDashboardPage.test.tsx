@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { store } from '../../app/store';
-import { MemoryRouter } from 'react-router-dom';
 import React from 'react';
-import { DashboardPage } from './DashboardPage';
+import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
+import { store } from '../../../app/store';
+import { DashboardPage } from './TranslatorDashboardPage';
 
-test.only('When rendering the dashboard page, a title should be displayed', () => {
+test('When rendering the dashboard page, a title should be displayed', () => {
   render(
     <MemoryRouter>
       <React.StrictMode>
@@ -16,6 +16,6 @@ test.only('When rendering the dashboard page, a title should be displayed', () =
     </MemoryRouter>,
   );
 
-  const title = screen.getByText('Assigned Projects');
+  const title = screen.getByText('Your Projects');
   expect(title).toBeInTheDocument();
 });

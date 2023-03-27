@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Translation } from '../../../shared/models/translation-model';
+import { Translation } from '../../../../shared/models/translation-model';
 import {
   BookingRef,
   DetailsLink,
@@ -8,7 +8,7 @@ import {
   FlagAndButtonContainer,
   PendingStatusFlag,
   TranslationCardContainer,
-} from '../TranslationCard/TranslationCardStyled';
+} from '../TranslationCardStyled';
 
 interface TranslationCardProps {
   translation: Translation;

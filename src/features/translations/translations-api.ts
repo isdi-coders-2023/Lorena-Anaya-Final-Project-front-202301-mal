@@ -70,3 +70,17 @@ export const updateTranslationStatus = async (
 
   return response;
 };
+
+export const getTranslationsList = async () => {
+  const response = await fetch(
+    `https://lorena-anaya-final-project-back-202301.onrender.com/translations`,
+    {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem('Bearer')}`,
+        'Content-Type': 'application/json',
+      },
+    },
+  );
+
+  return response;
+};

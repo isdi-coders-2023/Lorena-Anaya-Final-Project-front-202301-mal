@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { ServerErrorPage } from '../../../pages/error-pages/ServerError/ServerError';
-import { Translation } from '../../../shared/models/translation-model';
-import { selectResponseId } from '../../auth/auth-slice';
-import { TranslationCard } from '../TranslationCard/TranslationCard';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import { ServerErrorPage } from '../../../../pages/error-pages/ServerError/ServerError';
+import { Translation } from '../../../../shared/models/translation-model';
+import { selectResponseId } from '../../../auth/auth-slice';
+import { TranslationCard } from '../../TranslationCard/TranslatorTranslationCard/TranslatorTranslationCard';
 import {
   getTranslations,
   selectapiStatus,
   selectTranslations,
-} from '../translations-slice';
+} from '../../translations-slice';
 import {
   TranslationsFeedbackComponent,
   TranslationsListContainer,

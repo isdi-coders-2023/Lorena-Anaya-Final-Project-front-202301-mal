@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { NavBar } from './NavBar';
+import { NavBar } from './TranslatorNavBar';
 describe('Given a nav bar component', () => {
   test('When rendering, projects link should be in the document', () => {
     render(
