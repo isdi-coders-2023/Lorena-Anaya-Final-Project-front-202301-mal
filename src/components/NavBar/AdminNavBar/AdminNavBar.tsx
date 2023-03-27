@@ -2,18 +2,18 @@ import {
   NavBarContainer,
   NavLinkProfile,
   NavLinkProjects,
-} from './NavBarStyled';
+} from '../NavBarStyled';
 
-export const NavBar = () => {
+export const AdminNavBar = () => {
   return (
     <>
       <NavBarContainer>
-        <NavLinkProjects to={'/main/dashboard'}>
+        <NavLinkProjects to={'/admin/dashboard'}>
           <p>Projects</p>
         </NavLinkProjects>
 
-        <NavLinkProfile to={'/main/dashboard'}>
-          <p>My profile</p>
+        <NavLinkProfile to={'/admin/create'}>
+          <p>Assign</p>
         </NavLinkProfile>
       </NavBarContainer>
     </>
