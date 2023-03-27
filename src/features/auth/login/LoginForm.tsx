@@ -37,7 +37,7 @@ export const LoginForm = () => {
               />
             </FeedBackComponent>
             {userId === '641f744f4ed786867216a792' ? (
-              <Navigate to={'/admin/create'} />
+              <Navigate to={'/admin/dashboard'} />
             ) : (
               <Navigate to={'/main/dashboard'} />
             )}
