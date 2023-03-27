@@ -3,10 +3,10 @@ import userEvent from '@testing-library/user-event';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import { server } from '../../../mocks/server';
-import { renderWithProviders } from '../../../mocks/test-util';
+import { server } from '../../../../mocks/server';
+import { renderWithProviders } from '../../../../mocks/test-util';
 
-import { TranslationCard } from './TranslationCard';
+import { TranslationCard } from './TranslatorTranslationCard';
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());

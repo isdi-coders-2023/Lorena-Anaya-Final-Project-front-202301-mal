@@ -5,6 +5,7 @@ export const TranslationsListContainer = styled.ul`
   flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
+  margin-bottom: 2rem;
   justify-content: center;
   @media (min-width: 720px) {
     gap: 3rem;
