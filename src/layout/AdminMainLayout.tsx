@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom';
 import { useAppDispatch } from '../app/hooks';
-import { AdminNavBar } from '../components/NavBar/AdminNavBar';
+import { AdminNavBar } from '../components/NavBar/AdminNavBar/AdminNavBar';
 
 import { logoutUser } from '../features/auth/auth-slice';
 import {
@@ -33,7 +33,7 @@ const MainLayout = () => {
           <LogOut src="/assets/icons/log-out.png" alt="Log out"></LogOut>
         </Link>
       </Header>
-      <main style={{ height: '100%', background: '#fafaff' }}>
+      <main style={{ height: '100vh', background: '#fafaff' }}>
         <Outlet />
       </main>
       <Footer>

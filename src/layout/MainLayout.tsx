@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom';
 import { useAppDispatch } from '../app/hooks';
-import { NavBar } from '../components/NavBar/NavBar';
+import { NavBar } from '../components/NavBar/TranslatorNavBar/TranslatorNavBar';
 import { logoutUser } from '../features/auth/auth-slice';
 import {
   Footer,
