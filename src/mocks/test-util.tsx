@@ -41,6 +41,7 @@ export const renderWithProviders = (
         uploadTranslationStatus: 'unused',
         adminTranslations: [],
         adminTranslationsStatus: 'unused',
+        deleteStatus: 'unused',
       },
       usersReducer: {
         users: [],
