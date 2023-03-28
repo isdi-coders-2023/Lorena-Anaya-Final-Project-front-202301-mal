@@ -1,6 +1,5 @@
 import { FC } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
-import { NotFoundPage } from '../../../../pages/error-pages/404Page/404Page';
+import { useAppDispatch } from '../../../../app/hooks';
 
 import { Translation } from '../../../../shared/models/translation-model';
 import { deleteTranslationByIdAsync } from '../../translations-slice';

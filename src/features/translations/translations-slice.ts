@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { R } from 'msw/lib/glossary-de6278a9';
 import { RootState } from '../../app/store';
 import { Translation } from '../../shared/models/translation-model';
 import {
