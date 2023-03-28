@@ -16,6 +16,6 @@ test('When rendering the dashboard page, a title should be displayed', () => {
     </MemoryRouter>,
   );
 
-  const title = screen.getByText('All Assigned Projects');
+  const title = screen.getByText('Assigned Projects');
   expect(title).toBeInTheDocument();
 });
