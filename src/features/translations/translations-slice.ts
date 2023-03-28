@@ -24,16 +24,18 @@ export interface TranslationResponse {
   adminTranslations: Translation[];
 }
 
+type TranslationStateStatus = 'loading' | 'failed' | 'idle' | 'unused';
+
 export interface TranslationState {
   status: 'idle' | 'loading' | 'failed';
-  apiStatus: 'loading' | 'failed' | 'idle' | 'unused';
-  uploadTranslationStatus: 'loading' | 'failed' | 'idle' | 'unused';
+  apiStatus: TranslationStateStatus;
+  uploadTranslationStatus: TranslationStateStatus;
   responseMsg: string | undefined;
   translations: Translation[];
   translation: Translation;
   adminTranslations: Translation[];
-  adminTranslationsStatus: 'loading' | 'failed' | 'idle' | 'unused';
-  deleteStatus: 'loading' | 'failed' | 'idle' | 'unused';
+  adminTranslationsStatus: TranslationStateStatus;
+  deleteStatus: TranslationStateStatus;
 }
 
 const emptyTranslation: Translation = {
