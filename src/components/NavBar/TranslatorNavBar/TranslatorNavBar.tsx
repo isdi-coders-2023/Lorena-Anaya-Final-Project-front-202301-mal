@@ -12,8 +12,8 @@ export const NavBar = () => {
           <p>Projects</p>
         </NavLinkProjects>
 
-        <NavLinkProfile to={'/main/dashboard'}>
-          <p>My profile</p>
+        <NavLinkProfile to={'/main/enquiries'}>
+          <p>Enquiries</p>
         </NavLinkProfile>
       </NavBarContainer>
     </>
