@@ -5,13 +5,10 @@ import { logoutUser } from '../features/auth/auth-slice';
 import {
   Footer,
   FooterInfo,
-  Greeting,
-  GreetingContainer,
   Header,
   Logo,
   LogOut,
   Main,
-  Welcoming,
 } from './MainLayoutStyled';
 
 const MainLayout = () => {
