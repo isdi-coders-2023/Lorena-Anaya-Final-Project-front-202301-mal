@@ -10,7 +10,6 @@ export const TranslationCardContainer = styled.section`
   flex-direction: column;
   align-items: flex-start;
   padding: 2rem;
-  padding-top: 2.2rem;
   gap: 10px;
   width: 19rem;
   height: 11rem;
