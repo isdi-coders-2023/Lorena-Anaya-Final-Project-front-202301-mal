@@ -84,3 +84,18 @@ export const getTranslationsList = async () => {
 
   return response;
 };
+
+export const deleteTranslationById = async (id: string) => {
+  const response = await fetch(
+    `https://lorena-anaya-final-project-back-202301.onrender.com/translations/${id}`,
+    {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem('Bearer')}`,
+        'Content-Type': 'application/json',
+      },
+    },
+  );
+
+  return response;
+};
