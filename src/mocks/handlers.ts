@@ -6,7 +6,28 @@ import {
 } from './translations-mock';
 import { mockedUsers } from './users-mock';
 
+export const ErrorHandlers = [
+  rest.delete(
+    `https://lorena-anaya-final-project-back-202301.onrender.com/translations/mockId2`,
+    async (_req, res, ctx) => {
+      return res(
+        ctx.status(404),
+        ctx.json({
+          msg: 'Translation not found',
+        }),
+      );
+    },
+  ),
+];
+
 export const handlers = [
+  rest.delete(
+    `https://lorena-anaya-final-project-back-202301.onrender.com/translations/mockId1`,
+    (_req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({ msg: 'asd' }));
+    },
+  ),
+
   rest.get(
     `https://lorena-anaya-final-project-back-202301.onrender.com/user//translations`,
     (req, res, ctx) => {

@@ -19,8 +19,10 @@ export const TopSectionContainer = styled.section`
   align-content: center;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 2rem;
   @media (min-width: 664px) {
     flex-direction: row;
     justify-content: space-around;
+    margin-bottom: 0rem;
   }
 `;
