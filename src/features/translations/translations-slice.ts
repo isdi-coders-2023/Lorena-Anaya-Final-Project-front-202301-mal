@@ -1,8 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { R } from 'msw/lib/glossary-de6278a9';
 import { RootState } from '../../app/store';
 import { Translation } from '../../shared/models/translation-model';
 import {
   createTranslation,
+  deleteTranslationById,
   getTranslationById,
   getTranslationsList,
   getUserTranslationsList,
@@ -10,6 +12,9 @@ import {
   updateTranslationStatus,
 } from './translations-api';
 
+export interface TranslationsDeleteResponse {
+  translation: Translation;
+}
 export interface TranslationResponse {
   msg: string;
   translations: Translation[];
@@ -28,6 +33,7 @@ export interface TranslationState {
   translation: Translation;
   adminTranslations: Translation[];
   adminTranslationsStatus: 'loading' | 'failed' | 'idle' | 'unused';
+  deleteStatus: 'loading' | 'failed' | 'idle' | 'unused';
 }
 
 const emptyTranslation: Translation = {
@@ -51,7 +57,21 @@ const initialState: TranslationState = {
   uploadTranslationStatus: 'unused',
   adminTranslations: [],
   adminTranslationsStatus: 'unused',
+  deleteStatus: 'unused',
 };
+export const deleteTranslationByIdAsync = createAsyncThunk(
+  'deleteTranslationById/deleteTranslationByIdAsync',
+  async (id: string) => {
+    const apiResponse = await deleteTranslationById(id);
+    const data = await apiResponse.json();
+    if (!apiResponse.ok) {
+      throw new Error(`${data.msg}`);
+    }
+
+    return data;
+  },
+);
+
 export const getTranslations = createAsyncThunk(
   'getTranslations/getTranslationsList',
   async (id: string) => {
@@ -214,7 +234,29 @@ export const translationsSlice = createSlice({
         state.status = 'failed';
         state.adminTranslationsStatus = 'failed';
         state.responseMsg = action.error.message;
-      });
+      })
+      .addCase(deleteTranslationByIdAsync.pending, state => {
+        state.status = 'loading';
+      })
+      .addCase(deleteTranslationByIdAsync.rejected, (state, action) => {
+        state.status = 'failed';
+        state.responseMsg = action.error.message;
+      })
+      .addCase(
+        deleteTranslationByIdAsync.fulfilled,
+        (state, action: PayloadAction<TranslationsDeleteResponse>) => {
+          state.status = 'idle';
+          state.deleteStatus = 'idle';
+
+          /* istanbul ignore next */
+          const translationToDelete = state.adminTranslations.findIndex(
+            adminTranslation =>
+              adminTranslation._id === action.payload.translation._id,
+          );
+
+          state.adminTranslations.splice(translationToDelete, 1);
+        },
+      );
   },
 });
 
