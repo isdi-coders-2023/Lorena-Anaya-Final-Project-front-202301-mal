@@ -11,69 +11,82 @@ ul {
 
 @font-face {
   font-family: 'Poppins-Bold';
+  font-display: swap;
   src: local('Poppins-Bold'),
     url(./assets/fonts/Poppins-Bold.ttf) format(truetype);
 }
 
 @font-face {
   font-family: 'Poppins-Light';
+  font-display: swap;
   src: local('Poppins-Light'),
     url(./assets/fonts/Poppins-Light.ttf) format(truetype);
 }
 
 @font-face {
   font-family: 'Poppins-Medium';
+  font-display: swap;
   src: local('Poppins-Medium'),
     url(./assets/fonts/Poppins-Medium.ttf) format(truetype);
 }
 
 @font-face {
   font-family: 'Poppins-Regular';
+  font-display: swap;
   src: local('Poppins-Regular'),
     url(./assets/fonts/Poppins-Regular.ttf) format(truetype);
 }
 
 @font-face {
   font-family: 'Poppins-SemiBold';
+  font-display: swap;
   src: local('Poppins-SemiBold'),
     url(./assets/fonts/Poppins-SemiBold.ttf) format(truetype);
 }
 @font-face {
   font-family: 'Rubik-Bold';
+  font-display: swap;
   src: local('Rubik-Bold'), url(./assets/fonts/Rubik-Bold.ttf) format(truetype);
 }
 @font-face {
   font-family: 'Rubik-Light';
+  font-display: swap;
   src: local('Rubik-Light'),
     url(./assets/fonts/Rubik-Light.ttf) format(truetype);
 }
 @font-face {
   font-family: 'Rubik-Medium';
+  font-display: swap;
   src: local('Rubik-Medium'),
     url(./assets/fonts/Rubik-Medium.ttf) format(truetype);
 }
 @font-face {
   font-family: 'Rubik-Regular';
+  font-display: swap;
   src: local('Rubik-Regular'),
     url(./assets/fonts/Rubik-Regular.ttf) format(truetype);
 }
 @font-face {
   font-family: 'Rubik-SemiBold';
+  font-display: swap;
   src: local('Rubik-Semibold'),
     url(./assets/fonts/Rubik-SemiBold.ttf) format(truetype);
 }
 @font-face {
   font-family: 'SourceCodePro-Medium';
+  font-display: swap;
   src: local('SourceCodePro-Medium'),
     url(./assets/fonts/SourceCodePro-Medium.ttf) format(truetype);
 }
 @font-face {
   font-family: 'SourceCodePro-Regular';
+  font-display: swap;
   src: local('SourceCodePro-Regular'),
     url(./assets/fonts/SourceCodePro-Regular.ttf) format(truetype);
 }
 @font-face {
   font-family: 'SourceCodePro-Bold';
+  font-display: swap;
   src: local('SourceCodePro-Bold'),
     url(./assets/fonts/SourceCodePro-Bold.ttf) format(truetype);
 }
