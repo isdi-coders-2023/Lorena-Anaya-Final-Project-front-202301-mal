@@ -36,14 +36,6 @@ const MainLayout = () => {
       <main style={{ height: '100vh', background: '#fafaff' }}>
         <Outlet />
       </main>
-      <Footer>
-        <FooterInfo role="paragraph">info@btc365.net</FooterInfo>
-        <FooterInfo role="paragraph">
-          {' '}
-          © 2023 BTC365. All rights reserved
-        </FooterInfo>
-        <FooterInfo role="paragraph">+34 951196122</FooterInfo>
-      </Footer>
     </>
   );
 };
