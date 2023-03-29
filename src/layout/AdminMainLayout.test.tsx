@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { store } from '../app/store';
 import { renderWithProviders } from '../mocks/test-util';
 import AdminMainLayout from './AdminMainLayout';
-test('When rendering AdminMainLayout, then the footer should be rendered too', () => {
+test('When rendering adminMainlayout, then the log out icon should be rendered too', () => {
   render(
     <BrowserRouter>
       <Provider store={store}>
@@ -13,9 +13,9 @@ test('When rendering AdminMainLayout, then the footer should be rendered too', (
     </BrowserRouter>,
   );
 
-  const mobileInfo = screen.getByText('+34 951196122');
+  const logOutIcon = screen.getByAltText('Log out');
 
-  expect(mobileInfo).toBeInTheDocument();
+  expect(logOutIcon).toBeInTheDocument();
 });
 
 test('When the user tries to log out, then he should not have an accessToken key on his sessionStorage', async () => {
