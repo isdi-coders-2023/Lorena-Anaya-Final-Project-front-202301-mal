@@ -10,8 +10,12 @@ export const CreateLink = styled(Link)`
 `;
 
 export const AddIcon = styled.img`
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1rem;
+  height: 1rem;
+  @media (min-width: 664px) {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
 `;
 
 export const TopSectionContainer = styled.section`
