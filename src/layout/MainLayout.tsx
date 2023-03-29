@@ -5,13 +5,10 @@ import { logoutUser } from '../features/auth/auth-slice';
 import {
   Footer,
   FooterInfo,
-  Greeting,
-  GreetingContainer,
   Header,
   Logo,
   LogOut,
   Main,
-  Welcoming,
 } from './MainLayoutStyled';
 
 const MainLayout = () => {
@@ -24,10 +21,6 @@ const MainLayout = () => {
     <>
       <Header>
         <Logo src="/assets/logos/desktop-logo.png" alt="BTC365 Logo"></Logo>
-        <GreetingContainer>
-          <Greeting>Hello, Ana</Greeting>
-          <Welcoming>Welcome back to your account.</Welcoming>
-        </GreetingContainer>
         <NavBar />
         <Link to={'/'} onClick={() => handleLogout()} data-testid="logout-btn">
           <LogOut src="/assets/icons/log-out.png" alt="Log out"></LogOut>

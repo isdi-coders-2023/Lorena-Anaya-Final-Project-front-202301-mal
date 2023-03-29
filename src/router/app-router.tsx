@@ -3,6 +3,7 @@ import AdminMainLayout from '../layout/AdminMainLayout';
 import MainLayout from '../layout/MainLayout';
 import { AdminDashboardPage } from '../pages/DashboardPage/AdminDashboardPage/AdminDashboardPage';
 import { DashboardPage } from '../pages/DashboardPage/TranslatorDasboardPage/TranslatorDashboardPage';
+import { EnquiriesPage } from '../pages/EnquiriesPage/EnquiriesPage';
 import { NotFoundPage } from '../pages/error-pages/404Page/404Page';
 import { LoginPage } from '../pages/LoginPage/LoginPage';
 import { RegisterPage } from '../pages/RegisterPage/RegisterPage';
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: '/main/details/:translationId',
         element: <TranslationDetailsPage />,
+      },
+      {
+        path: '/main/enquiries',
+        element: <EnquiriesPage />,
       },
     ],
   },
