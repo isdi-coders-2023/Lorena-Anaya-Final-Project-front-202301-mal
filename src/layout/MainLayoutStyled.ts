@@ -35,9 +35,11 @@ export const Header = styled.header`
 
 export const Logo = styled.img`
   width: 8rem;
+  height: 3rem;
   @media (min-width: 600px) {
     width: 15rem;
     padding-left: 2rem;
+    height: 5rem;
   }
 `;
 
