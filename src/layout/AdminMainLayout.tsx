@@ -4,8 +4,6 @@ import { AdminNavBar } from '../components/NavBar/AdminNavBar/AdminNavBar';
 
 import { logoutUser } from '../features/auth/auth-slice';
 import {
-  Footer,
-  FooterInfo,
   Greeting,
   GreetingContainer,
   Header,

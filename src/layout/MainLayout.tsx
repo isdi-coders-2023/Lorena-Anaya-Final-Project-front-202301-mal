@@ -2,14 +2,7 @@ import { Link, Outlet } from 'react-router-dom';
 import { useAppDispatch } from '../app/hooks';
 import { NavBar } from '../components/NavBar/TranslatorNavBar/TranslatorNavBar';
 import { logoutUser } from '../features/auth/auth-slice';
-import {
-  Footer,
-  FooterInfo,
-  Header,
-  Logo,
-  LogOut,
-  Main,
-} from './MainLayoutStyled';
+import { Header, Logo, LogOut, Main } from './MainLayoutStyled';
 
 const MainLayout = () => {
   const dispatch = useAppDispatch();
