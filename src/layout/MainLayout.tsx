@@ -2,14 +2,7 @@ import { Link, Outlet } from 'react-router-dom';
 import { useAppDispatch } from '../app/hooks';
 import { NavBar } from '../components/NavBar/TranslatorNavBar/TranslatorNavBar';
 import { logoutUser } from '../features/auth/auth-slice';
-import {
-  Footer,
-  FooterInfo,
-  Header,
-  Logo,
-  LogOut,
-  Main,
-} from './MainLayoutStyled';
+import { Header, Logo, LogOut, Main } from './MainLayoutStyled';
 
 const MainLayout = () => {
   const dispatch = useAppDispatch();
@@ -29,14 +22,6 @@ const MainLayout = () => {
       <Main style={{ background: '#fafaff' }}>
         <Outlet />
       </Main>
-      <Footer>
-        <FooterInfo role="paragraph">info@btc365.net</FooterInfo>
-        <FooterInfo role="paragraph">
-          {' '}
-          © 2023 BTC365. All rights reserved
-        </FooterInfo>
-        <FooterInfo role="paragraph">+34 951196122</FooterInfo>
-      </Footer>
     </>
   );
 };
