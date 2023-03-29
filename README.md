@@ -1,46 +1,30 @@
-# Getting Started with Create React App
+🟢 BTC365 Projects Application Front End 🟢
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+This is the front-end for the web application BTC365 Projects.
 
-## Available Scripts
+The purpose of this application is to allow the translation agency BTC365 to manage translations in an easy way. The admin can create projects and assign them to the different translators that are registered. This way, admin and translator can both see the main information regarding the management of a project: due date, languages (from and to) and number of words. The admin can also upload the document to be translated by the translator, and the translator can upload the document when translated.
 
-In the project directory, you can run:
+🔸The language in which this app is programmed is Typescript (https://www.typescriptlang.org/).
 
-### `npm start`
+🔸To implement dynamic routing in the web app react-router-dom npm package is used (https://reactrouter.com/en/main).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+🔸In order to keep the code clean and follow best practices, these tools are used:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+-Husky hooks (https://typicode.github.io/husky/#/)
 
-### `npm test`
+-Eslint (https://eslint.org/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-Code formatter Prettier (https://prettier.io/)
 
-### `npm run build`
+-SonarCloud (https://www.sonarsource.com/products/sonarcloud/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-Editorconfig
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+🔸Testing is also done through all the project, with the help of:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-React Testing Library (https://testing-library.com/)
 
-### `npm run eject`
+-Jest (https://jestjs.io/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+-Mock Service Worker (https://mswjs.io/)
