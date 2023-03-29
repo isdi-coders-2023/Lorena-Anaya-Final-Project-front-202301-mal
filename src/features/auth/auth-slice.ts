@@ -27,7 +27,7 @@ const initialState: AuthUserState = {
   registerStatus: 'unused',
   loginStatus: 'unused',
   responseMsg: ' ',
-  id: '',
+  id: sessionStorage.getItem('Id') ?? '',
 };
 
 export const sendUser = createAsyncThunk(
